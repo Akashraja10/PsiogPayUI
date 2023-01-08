@@ -1,0 +1,78 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button routerLink="/dashboard">Home</button>
+    <button mat-button routerLink="">About</button>
+    <button mat-button routerLink="">Contact</button>&nbsp;
+
+    <button class="profile" mat-button [matMenuTriggerFor]="menu">
+      {{ fullName }}
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
+      <button mat-menu-item *ngIf="isUserAuthenticated()">
+        <a class="logout" (click)="logOut()">Logout</a>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<section class="section">
+  <div class="container1">
+    <table class="mytable" *ngIf="employee && employee.length > 0"></table>
+    <thead class="head">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr *ngFor="let emp of employee">
+        <td>{{ emp.empId }}</td>
+        <td>{{ emp.empFname }}</td>
+        <td>
+          <span>&#8377;</span>
+          <button
+            mat-raised-button
+            color="primary"
+            mat-button
+            (click)="showForm = !showForm"
+            id="send"
+          >
+            Send
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <p *ngIf="!employee || employee.length <= 0">No Employees Found</p>
+  </div>
+
+  <div class="container2" *ngIf="showForm">
+    <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+    <ng-template #formTemplate>
+      <form [formGroup]="transferForm" (ngSubmit)="submit()">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Amount"
+            type="number"
+            formControlName="amount"
+          />
+          <span matPrefix>&#8377;&nbsp;</span>
+          <span matSuffix>.00</span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Name" formControlName="name" />
+        </mat-form-field>
+        <br />
+        <button type="submit" mat-raised-button color="primary">
+          Transfer
+        </button>
+      </form>
+    </ng-template>
+  </div>
+</section>

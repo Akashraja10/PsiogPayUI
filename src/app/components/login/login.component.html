@@ -1,0 +1,101 @@
+<section class="bg">
+  <div class="center-content">
+    <!-- <div class="logo">
+      <img src="../../images/logo.png" />
+    </div> -->
+    <mat-card class="example-card">
+      <mat-card-title>Login</mat-card-title><br />
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" formControlName="Username" />
+          <mat-error *ngIf="Username?.errors?.['required']">
+            Username is required
+          </mat-error>
+          <mat-error *ngIf="Username?.errors?.['Username']">
+            Please enter a valid Username
+          </mat-error>
+          <mat-icon matSuffix>email</mat-icon> </mat-form-field
+        ><br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="Password"
+          />
+          <mat-error *ngIf="Password?.errors?.['required']">
+            Password is required
+          </mat-error>
+          <mat-icon matSuffix>vpn_key</mat-icon> </mat-form-field
+        ><br /><br />
+        <button type="submit" mat-button color="primary">Submit</button>
+      </form>
+    </mat-card>
+    <span>New to our platform?<a [routerLink]="['/signup']">SignUp!</a></span>
+  </div>
+</section>
+
+<!-- <div class="form-container">
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <input matInput placeholder="Username" formControlName="Username" />
+      <mat-error *ngIf="Username?.errors?.['required']">
+        Email address is required
+      </mat-error>
+      <mat-error *ngIf="Username?.errors?.['Username']">
+        Please enter a valid email address
+      </mat-error>
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="Password" />
+      <mat-error *ngIf="Password?.errors?.['required']">
+        Password is required
+      </mat-error>
+      <mat-error *ngIf="Password?.errors?.['Password']">
+        Please enter a valid password
+      </mat-error>
+      <mat-icon matSuffix>vpn_key</mat-icon>
+    </mat-form-field>
+    <div class="center margin-top">
+      <button type="submit" mat-button color="primary">Submit</button>
+    </div>
+    <span>New to our platform?<a [routerLink]="['/signup']">SignUp!</a></span>
+  </form>
+</div> -->
+
+<!-- <div class="center-content">
+  <mat-card class="example-card">
+    <mat-card-title>Login</mat-card-title><br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Username</mat-label>
+      <input
+        type="email"
+        name="email"
+        matInput
+        placeholder="Email"
+        [(ngModel)]="credentials.Username"
+      />
+      <mat-icon matSuffix>email</mat-icon> </mat-form-field
+    ><br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        name="password"
+        matInput
+        placeholder="Password"
+        [(ngModel)]="credentials.Password"
+      />
+      <mat-icon matSuffix>vpn_key</mat-icon> </mat-form-field
+    ><br /><br />
+    <button mat-button color="primary" (click)="login()">Submit</button>
+  </mat-card>
+  <span>New to our platform?<a [routerLink]="['/signup']">SignUp!</a></span>
+</div> -->

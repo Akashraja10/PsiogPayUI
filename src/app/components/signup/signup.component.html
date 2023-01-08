@@ -1,0 +1,195 @@
+<div class="center-content">
+  <mat-card class="example-card">
+    <mat-card-title>Register</mat-card-title><br />
+    <form [formGroup]="signUpForm" (ngSubmit)="signup()">
+      <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="FirstName"
+          formControlName="EmpFname"
+        />
+        <mat-error *ngIf="EmpFname?.errors?.['required']">
+          Name is required
+        </mat-error>
+        <mat-icon matSuffix>add</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="LastName"
+          formControlName="EmpLname"
+        />
+        <mat-error *ngIf="EmpLname?.errors?.['required']">
+          Name is required
+        </mat-error>
+        <mat-icon matSuffix>add</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>UserName</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="UserName"
+          formControlName="Username"
+        />
+        <mat-error *ngIf="Username?.errors?.['required']">
+          UserName is required
+        </mat-error>
+        <mat-icon matSuffix>add</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          formControlName="Password"
+        />
+        <mat-error *ngIf="Password?.errors?.['required']">
+          Password is required
+        </mat-error>
+        <mat-icon matSuffix>vpn_key</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="Email"
+          formControlName="Email"
+        />
+        <mat-error *ngIf="Email?.errors?.['required']">
+          Email address is required
+        </mat-error>
+        <mat-error *ngIf="Email?.errors?.['Email']">
+          Please enter a valid email address
+        </mat-error>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Age</mat-label>
+        <input type="number" matInput placeholder="Age" formControlName="Age" />
+        <mat-error *ngIf="Age?.errors?.['required']">
+          Age is required
+        </mat-error>
+        <mat-icon matSuffix>add</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Gender [M/G]</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="gender"
+          formControlName="Gender"
+        />
+        <mat-error *ngIf="Gender?.errors?.['required']">
+          Gender is required
+        </mat-error>
+        <mat-icon matSuffix>add</mat-icon>
+      </mat-form-field>
+
+      <button mat-button color="primary">Register</button>
+    </form>
+  </mat-card>
+</div>
+
+<!-- <div class="center-content">
+  <mat-card class="example-card">
+    <mat-card-title>Register</mat-card-title><br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="FirstName"
+        value=""
+        [(ngModel)]="rgs.EmpFname"
+      />
+      <mat-icon matSuffix>add</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="LastName"
+        value=""
+        [(ngModel)]="rgs.EmpLname"
+      />
+      <mat-icon matSuffix>add</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>UserName</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="UserName"
+        value=""
+        [(ngModel)]="rgs.Username"
+      />
+      <mat-icon matSuffix>add</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        [(ngModel)]="rgs.Password"
+      />
+      <mat-icon matSuffix>vpn_key</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        value=""
+        [(ngModel)]="rgs.Email"
+      />
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Age</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Age"
+        value=""
+        [(ngModel)]="rgs.Age"
+      />
+      <mat-icon matSuffix>add</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Gender</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="gender"
+        value=""
+        [(ngModel)]="rgs.Gender"
+      />
+      <mat-icon matSuffix>add</mat-icon>
+    </mat-form-field>
+
+    <button mat-button color="primary" (click)="signup()">Register</button>
+  </mat-card>
+</div> -->

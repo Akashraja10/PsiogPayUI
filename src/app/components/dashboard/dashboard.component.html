@@ -1,0 +1,12 @@
+<h1>DashBoard</h1>
+
+<div style="color: blue">
+  <h2>YOU ARE LOGGED IN</h2>
+</div>
+<br />
+<button>
+  <a [routerLink]="['individual']" class="one-one">Individual Transaction</a>
+</button>
+<button *ngIf="isUserAuthenticated()">
+  <a class="logout" (click)="logOut()">Logout</a>
+</button>

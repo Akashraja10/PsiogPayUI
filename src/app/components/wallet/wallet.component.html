@@ -1,0 +1,17 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button routerLink="/dashboard/individual">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button mat-button routerLink="">About</button>
+    <button mat-button routerLink="">Contact</button>&nbsp;
+
+    <button class="profile" mat-button>
+      {{ fullName }}
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
