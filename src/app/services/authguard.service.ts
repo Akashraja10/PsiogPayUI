@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 
   export class  AuthGuard implements CanActivate {
 
-    private baseUrl:string="https://localhost:7290/api/Emploee/"
+    
     public empPayload:any;
     constructor(private http:HttpClient,private route:Router,private jwthelper: JwtHelperService ){
       this.empPayload= this.decodeToken();
@@ -50,12 +50,13 @@ import { HttpClient } from '@angular/common/http';
     if(this.empPayload)
     return this.empPayload.unique_name
   }
-  setid(tokenvalue: string){
-    localStorage.setItem("certserialnumber",tokenvalue)
-  }
-  getid(){
-    return localStorage.getItem("certserialnumber")
-  }
+
+  // setid(tokenvalue: string){
+  //   localStorage.setItem("certserialnumber",tokenvalue)
+  // }
+  // getid(){
+  //   return localStorage.getItem("certserialnumber")
+  // }
 
   
   

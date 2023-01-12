@@ -44,7 +44,7 @@
   <div class="container2" *ngIf="showForm">
     <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
     <ng-template #formTemplate>
-      <form [formGroup]="transferForm" (ngSubmit)="submit()">
+      <form class="myform" [formGroup]="transferForm" (ngSubmit)="submit()">
         <mat-form-field>
           <input
             matInput

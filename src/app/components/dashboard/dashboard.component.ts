@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private jwtHelper: JwtHelperService, private router: Router) { }
 
   ngOnInit(): void {
+  
   }
 
   isUserAuthenticated = (): boolean => {

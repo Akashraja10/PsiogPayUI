@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { EmployeeService } from '../../services/employee.service';
 
 
+
 @Component({
   selector: 'app-individual',
   templateUrl: './individual.component.html',
@@ -29,7 +30,8 @@ export class IndividualComponent implements OnInit {
     recieverId: new FormControl(),
     amount: new FormControl()
 });
- 
+  myid:any;
+
 
   constructor(private http: HttpClient,
     private jwtHelper: JwtHelperService,
@@ -49,11 +51,12 @@ export class IndividualComponent implements OnInit {
       .subscribe(val=>{
         let idFromToken=this.auth.getidFromToken();
         this.id=val || idFromToken
+        this.myid=this.id;
         console.log(this.id)
       });
 
 
-      this.http.get("https://localhost:7290/api/Employee/"+this.id).subscribe({
+      this.http.get(this.baseApiUrl+"/api/Employee/"+this.id).subscribe({
         next:(employee)=>{
            console.log(employee); 
            this.employee=employee;  
@@ -63,6 +66,8 @@ export class IndividualComponent implements OnInit {
         }
       });
     };
+  
+
 
     isUserAuthenticated = (): boolean => {
       const token = localStorage.getItem("jwt");
@@ -78,11 +83,11 @@ export class IndividualComponent implements OnInit {
     }
 
     submit(){
-      this.http.post("https://localhost:7290/api/Individual/individual",this.transferForm.value)
+      this.http.post(this.baseApiUrl+"/api/Individual/individual",this.transferForm.value)
       .subscribe({ 
         next:(res)=>{
           console.log(res),
-          this.router.navigate(["paysuccess"]);
+          this.router.navigate(['paysuccess']);
         },
         error:(err)=>{
           console.log(err);

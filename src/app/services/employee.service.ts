@@ -21,9 +21,9 @@ export class EmployeeService {
     // return this.http.get(this.baseApiUrl+ `/api/Employee/1`);
     // }
 
-    public getWalletAccDetails(){
-    return this.http.get(this.baseApiUrl+ "/api/SelfWallet/1");
-    }
+    // public getWalletAccDetails(){
+    // return this.http.get(this.baseApiUrl+ "/api/SelfWallet/1");
+    // }
 
     public getIdFromStore(){
       return this.id$.asObservable();

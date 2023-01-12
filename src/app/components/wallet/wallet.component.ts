@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthGuard } from 'src/app/services/authguard.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-wallet',
@@ -12,6 +13,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
   styleUrls: ['./wallet.component.css']
 })
 export class WalletComponent implements OnInit {
+  baseApiUrl: string =environment.baseApiUrl;
 
   public fullName: string="";
   public id: Number=(0);
@@ -41,7 +43,7 @@ export class WalletComponent implements OnInit {
         console.log(this.id)
       });
 
-      this.http.get("https://localhost:7290/api/SelfWallet/"+this.id).subscribe({
+      this.http.get(this.baseApiUrl+"/api/SelfWallet/"+this.id).subscribe({
         next:(wallet)=>{
            console.log(wallet); 
            this.wallet=wallet;  
@@ -53,7 +55,7 @@ export class WalletComponent implements OnInit {
   }
 
   submit(){
-    this.http.put("https://localhost:7290/api/SelfWallet/"+this.id,this.transferForm.value)
+    this.http.put(this.baseApiUrl+"/api/SelfWallet/"+this.id,this.transferForm.value)
     .subscribe({ 
       next:(res)=>{
         console.log(res),

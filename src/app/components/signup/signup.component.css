@@ -1,22 +1,22 @@
+.bg{   
+  /* background-image: url('../../images/1546573355503.jpg'); */
+  background-image: linear-gradient(to right, rgba(57, 206, 206,0.9), rgba(89, 255, 92, 0.9));
+  height: 100%;
+}
 .example-card {
     max-width: 400px;
-    background-color:lightblue;
+    background-color:rgb(57, 206, 206);
   }
   .mat-card-header{
     margin-left: 160px;
   }
   .center-content {
-      margin-top: 100px;
+      /* margin-top: 100px; */
       text-align: -webkit-center;
   }
-  .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
+
   .example-full-width {
-      margin-top: 10px;
+    
     width: 100%;
   }
   .mat-button{
@@ -24,5 +24,5 @@
     width: 100%;
     color: white;
     height: 40px;
-    background-color: #3F51B5;
+    background-color: #63b32e;
   }

@@ -12,15 +12,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
   
   signUpForm = new FormGroup({
-    EmpFname: new FormControl('',Validators.required),
-    EmpLname: new FormControl('',Validators.required),
-    Username: new FormControl('',Validators.required),
-    Password: new FormControl('',Validators.required),
+    EmpFname: new FormControl('',[Validators.required, Validators.minLength(3),Validators.pattern('[a-zA-Z ]*')]),
+    EmpLname: new FormControl('',[Validators.required, Validators.minLength(3),Validators.pattern('[a-zA-Z ]*')]),
+    Username: new FormControl('',[Validators.required,Validators.minLength(6)]),
+    Password: new FormControl('',[Validators.required,Validators.minLength(8)]),
     Email: new FormControl('',[Validators.required,Validators.email]),
-    Age: new FormControl('',Validators.required),
-    Gender: new FormControl('',Validators.required)
+    Age: new FormControl('',[Validators.required,Validators.pattern('^(?:|1[7-9]|[2-9][0-9])$')]),
+    Gender: new FormControl('',[Validators.required,Validators.minLength(1)]) 
   });
-  invalidLogin: boolean | undefined;
+  invalidLogin: boolean | undefined; //^(?:1[01][0-9]|120|1[7-9]|[2-9][0-9])$
 
   constructor(private router: Router,private http: HttpClient){}
   ngOnInit(): void {
