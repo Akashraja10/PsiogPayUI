@@ -15,3 +15,51 @@
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<section class="section">
+  <div id="main">
+    <h1 class="heading">Check Wallet balance</h1>
+    <div class="account">
+      <h3>Wallet amount</h3>
+      <p *ngFor="let wal of wallet">
+        <b> &#8377;&nbsp;{{ wal.walletAmount }}</b
+        ><button
+          mat-raised-button
+          color="primary"
+          class="btn"
+          mat-button
+          (click)="showForm = !showForm"
+        >
+          Add Money
+        </button>
+      </p>
+      <br />
+      <h3>Account balance</h3>
+      <p *ngFor="let wal of wallet">
+        <b>&#8377;&nbsp;{{ wal.totalAmount }}</b>
+      </p>
+    </div>
+  </div>
+
+  <div class="container2" *ngIf="showForm">
+    <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+    <ng-template #formTemplate>
+      <form [formGroup]="transferForm" (ngSubmit)="submit()">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Amount"
+            type="number"
+            formControlName="walletAmount"
+          />
+          <span matPrefix>&#8377;&nbsp;</span>
+          <span matSuffix>.00</span>
+        </mat-form-field>
+        <br />
+        <button type="submit" mat-raised-button color="primary">
+          Transfer
+        </button>
+      </form>
+    </ng-template>
+  </div>
+</section>

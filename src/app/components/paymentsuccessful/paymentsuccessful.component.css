@@ -1,0 +1,27 @@
+.bg{
+    background-image: linear-gradient(to right, rgba(57, 206, 206,0.9), rgba(89, 255, 92, 0.9));
+    height: 100%;
+    width:100%;
+}
+.payment-successful-container {
+    border: 1px solid green;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; 
+    width:50%;
+    margin: auto;
+}
+.success-icon {
+    font-size: 50px;
+    color: green;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

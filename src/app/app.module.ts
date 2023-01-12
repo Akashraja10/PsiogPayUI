@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { IndividualComponent } from './components/individual/individual.component';
 import { MatMenuModule} from '@angular/material/menu';
 import { WalletComponent } from './components/wallet/wallet.component';
+import { PaymentsuccessfulComponent } from './components/paymentsuccessful/paymentsuccessful.component';
 
 
 
@@ -37,6 +38,7 @@ export function tokenGetter() {
     DashboardComponent,
     IndividualComponent,
     WalletComponent,
+    PaymentsuccessfulComponent,
     
   ],
   imports: [

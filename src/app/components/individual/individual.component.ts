@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Employee } from 'src/app/models/employee.model';
 import { AuthGuard } from 'src/app/services/authguard.service';
+import { environment } from 'src/environments/environment';
 import { EmployeeService } from '../../services/employee.service';
 
 
@@ -14,17 +15,21 @@ import { EmployeeService } from '../../services/employee.service';
   styleUrls: ['./individual.component.css']
 })
 export class IndividualComponent implements OnInit {
+  baseApiUrl: string =environment.baseApiUrl;
 
   //employees: Employee[]=[];
   //employees:any;
 
   employee:any;
   public fullName: string="";
+  public id: Number=(0);
   showForm = false;
   transferForm = new FormGroup({
-    amount: new FormControl(),
-    name:new FormControl(),
+    senderId:new FormControl(),
+    recieverId: new FormControl(),
+    amount: new FormControl()
 });
+ 
 
   constructor(private http: HttpClient,
     private jwtHelper: JwtHelperService,
@@ -37,20 +42,27 @@ export class IndividualComponent implements OnInit {
       .subscribe(val=>{
         let fullNameFromToken=this.auth.getFullNameFromToken();
         this.fullName=val || fullNameFromToken
+        console.log(this.fullName)
       });
 
-      this.employeeService.individualList().subscribe({
-          next:(employee)=>{
-             console.log(employee); 
-             this.employee=employee;  
-          },
-          error: (response)=>{
-            console.log(response);
-          }
-        })
+      this.employeeService.getIdFromStore()
+      .subscribe(val=>{
+        let idFromToken=this.auth.getidFromToken();
+        this.id=val || idFromToken
+        console.log(this.id)
+      });
 
-    }
 
+      this.http.get("https://localhost:7290/api/Employee/"+this.id).subscribe({
+        next:(employee)=>{
+           console.log(employee); 
+           this.employee=employee;  
+        },
+        error: (response)=>{
+          console.log(response);
+        }
+      });
+    };
 
     isUserAuthenticated = (): boolean => {
       const token = localStorage.getItem("jwt");
@@ -64,10 +76,21 @@ export class IndividualComponent implements OnInit {
       localStorage.removeItem("jwt");
       this.router.navigate(['login']);
     }
-    submit=() =>{
-      this.router.navigate(['/dashboard'])
+
+    submit(){
+      this.http.post("https://localhost:7290/api/Individual/individual",this.transferForm.value)
+      .subscribe({ 
+        next:(res)=>{
+          console.log(res),
+          this.router.navigate(["paysuccess"]);
+        },
+        error:(err)=>{
+          console.log(err);
+        }
+      });
     }
   }
+
 
   // getData(empid: Number) {
   //   this.http.get(`https://localhost:7290/api/Employee/${empid}`).subscribe(employee => {       
@@ -97,5 +120,16 @@ export class IndividualComponent implements OnInit {
       //   }
       // });
 
+
+      
+      // this.employeeService.individualList().subscribe({
+      //     next:(employee)=>{
+      //        console.log(employee); 
+      //        this.employee=employee;  
+      //     },
+      //     error: (response)=>{
+      //       console.log(response);
+      //     }
+      //   })
 
 

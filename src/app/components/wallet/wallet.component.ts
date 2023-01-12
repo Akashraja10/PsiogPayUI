@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthGuard } from 'src/app/services/authguard.service';
@@ -13,6 +14,12 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class WalletComponent implements OnInit {
 
   public fullName: string="";
+  public id: Number=(0);
+  wallet: any;
+  showForm = false;
+  public transferForm = new FormGroup({
+    walletAmount: new FormControl(),
+  });
 
   constructor( private http: HttpClient,
     private jwtHelper: JwtHelperService,
@@ -26,7 +33,47 @@ export class WalletComponent implements OnInit {
         let fullNameFromToken=this.auth.getFullNameFromToken();
         this.fullName=val || fullNameFromToken
       });
+
+      this.employeeService.getIdFromStore()
+      .subscribe(val=>{
+        let idFromToken=this.auth.getidFromToken();
+        this.id=val || idFromToken
+        console.log(this.id)
+      });
+
+      this.http.get("https://localhost:7290/api/SelfWallet/"+this.id).subscribe({
+        next:(wallet)=>{
+           console.log(wallet); 
+           this.wallet=wallet;  
+        },
+        error: (response)=>{
+          console.log(response);
+        }
+      })
   }
-  
-// https://localhost:7290/api/SelfWallet/1
-}
+
+  submit(){
+    this.http.put("https://localhost:7290/api/SelfWallet/"+this.id,this.transferForm.value)
+    .subscribe({ 
+      next:(res)=>{
+        console.log(res),
+        this.router.navigate(["paysuccess"]);
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    });
+  }
+};
+
+
+
+      // this.employeeService.getWalletAccDetails().subscribe({
+      //   next:(wallet)=>{
+      //     console.log(wallet); 
+      //     this.wallet=wallet;  
+      //  },
+      //  error: (response)=>{
+      //    console.log(response);
+      //  }
+      // })

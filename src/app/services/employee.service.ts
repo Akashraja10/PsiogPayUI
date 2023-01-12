@@ -17,8 +17,12 @@ export class EmployeeService {
   private id$= new BehaviorSubject<Number>(0);
   constructor(private http: HttpClient) {}
 
-  individualList(){
-    return this.http.get(this.baseApiUrl+ `/api/Employee/1`);
+    // public individualList(){
+    // return this.http.get(this.baseApiUrl+ `/api/Employee/1`);
+    // }
+
+    public getWalletAccDetails(){
+    return this.http.get(this.baseApiUrl+ "/api/SelfWallet/1");
     }
 
     public getIdFromStore(){
