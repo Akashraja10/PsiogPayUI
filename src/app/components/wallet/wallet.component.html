@@ -2,46 +2,70 @@
   href="https://fonts.googleapis.com/icon?family=Material+Icons"
   rel="stylesheet"
 />
-<mat-toolbar color="primary">
+<mat-toolbar>
   <mat-toolbar-row>
-    <button mat-icon-button routerLink="/dashboard/individual">
-      <mat-icon>arrow_back</mat-icon>
+    <button class="navbtn" mat-button routerLink="/dashboard">
+      <mat-icon>arrow_back</mat-icon>&nbsp;
     </button>
-    <button mat-button routerLink="">About</button>
-    <button mat-button routerLink="">Contact</button>&nbsp;
+    <button class="navbtn" mat-button routerLink="">
+      <span>About</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="">
+      <span>Contact</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="/dashboard/external">
+      <span>External</span>&nbsp;
+    </button>
 
-    <button class="profile" mat-button>
-      {{ fullName }}
+    <button class="navbtn" id="profile" mat-button [matMenuTriggerFor]="menu">
+      <span>{{ fullName }}</span>
     </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
+      <button mat-menu-item *ngIf="isUserAuthenticated()">
+        <a class="logout" (click)="logOut()">Logout</a>
+      </button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<section class="section">
-  <div id="main">
-    <h1 class="heading">Check Wallet balance</h1>
-    <div class="account">
-      <h3>Wallet amount</h3>
-      <p *ngFor="let wal of wallet">
-        <b> &#8377;&nbsp;{{ wal.walletAmount }}</b
-        ><button
-          mat-raised-button
-          color="primary"
-          class="btn"
-          mat-button
-          (click)="showForm = !showForm"
-        >
-          Add Money
-        </button>
-      </p>
-      <br />
-      <h3>Account balance</h3>
-      <p *ngFor="let wal of wallet">
-        <b>&#8377;&nbsp;{{ wal.totalAmount }}</b>
-      </p>
-    </div>
-  </div>
+<section id="container">
+  <div class="account">
+    <section class="section">
+      <div id="main">
+        <div id="main2">
+          <mat-icon>account_balance_wallet</mat-icon>
+          <h3>My Wallet amount</h3>
+          <p *ngFor="let wal of wallet">
+            <b> &#8377;&nbsp;{{ wal.walletAmount }}</b
+            >&nbsp;&nbsp;&nbsp;
+            <button
+              mat-button
+              matTooltip="Allocate Stream"
+              matTooltipPosition="right"
+              (click)="openDialog()"
+              id="send"
+            >
+              Add Money
+            </button>
+          </p>
+          <br />
+          <mat-icon>account_balance</mat-icon>
+          <h3>My Account balance</h3>
+          <p *ngFor="let wal of wallet">
+            <b>&#8377;&nbsp;{{ wal.totalAmount }}</b>
+          </p>
+        </div>
+      </div>
 
-  <div class="container2" *ngIf="showForm">
+      <div class="sec">
+        <img class="image" src="../../../assets/money.jpg" />
+      </div>
+    </section>
+  </div>
+</section>
+<!-- <div class="container2" *ngIf="showForm">
     <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
     <ng-template #formTemplate>
       <form class="myform" [formGroup]="transferForm" (ngSubmit)="submit()">
@@ -56,10 +80,8 @@
           <span matSuffix>.00</span>
         </mat-form-field>
         <br />
-        <button type="submit" mat-raised-button color="primary">
-          Transfer
-        </button>
+        <button class="btn" type="submit" mat-raised-button>Transfer</button>
       </form>
     </ng-template>
   </div>
-</section>
+</section> -->

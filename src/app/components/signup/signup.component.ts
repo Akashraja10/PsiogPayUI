@@ -20,7 +20,8 @@ export class SignupComponent implements OnInit {
     Age: new FormControl('',[Validators.required,Validators.pattern('^(?:|1[7-9]|[2-9][0-9])$')]),
     Gender: new FormControl('',[Validators.required,Validators.minLength(1)]) 
   });
-  invalidLogin: boolean | undefined; //^(?:1[01][0-9]|120|1[7-9]|[2-9][0-9])$
+  invalidLogin: boolean | undefined;
+  hide = true; //^(?:1[01][0-9]|120|1[7-9]|[2-9][0-9])$
 
   constructor(private router: Router,private http: HttpClient){}
   ngOnInit(): void {
@@ -50,8 +51,7 @@ export class SignupComponent implements OnInit {
     
    signup(){
     console.log(this.signUpForm.value);
-    this.http.post("https://localhost:7290/api/Employee/register", this.signUpForm.value,{
-      headers: new HttpHeaders({ "Content-Type": "application/json"})  
+    this.http.post("https://localhost:7290/api/Employee/register", this.signUpForm.value,{  
     })
     .subscribe({
       next:()=>{

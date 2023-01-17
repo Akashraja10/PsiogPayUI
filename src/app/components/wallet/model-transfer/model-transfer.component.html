@@ -1,0 +1,22 @@
+<div mat-dialog-content>
+  <form class="myform" [formGroup]="transferForm">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Amount"
+        type="number"
+        formControlName="walletAmount"
+      />
+      <span matPrefix>&#8377;&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button class="button1" mat-button (click)="doAction()" id="send">
+        Transfer
+      </button>
+      <button class="button2" mat-button (click)="closeDialog()" id="send">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

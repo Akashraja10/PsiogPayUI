@@ -1,0 +1,113 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button class="navbtn" mat-button routerLink="/dashboard">
+      <mat-icon>arrow_back</mat-icon>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="">
+      <span>About</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="">
+      <span>Contact</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="/dashboard/individual">
+      <span>Individual</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="/dashboard/external">
+      <span>External</span>&nbsp;
+    </button>
+
+    <button class="navbtn" id="profile" mat-button [matMenuTriggerFor]="menu">
+      <span>{{ fullName }}</span>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
+      <button mat-menu-item *ngIf="isUserAuthenticated()">
+        <a class="logout" (click)="logOut()">Logout</a>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<section class="myclass">
+  <div class="first">
+    <br />
+    <mat-card class="example-card">
+      <mat-card-title><h1>Ask For Request</h1></mat-card-title><br />
+      <form [formGroup]="reqForm" (ngSubmit)="submit()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Employee ID</mat-label>
+          <input
+            matInput
+            [(ngModel)]="myid"
+            placeholder="ID"
+            formControlName="empId"
+          /> </mat-form-field
+        ><br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Request Amount</mat-label>
+          <input
+            matInput
+            placeholder="Amount"
+            type="number"
+            formControlName="quotedAmount"
+          />
+          <span matPrefix>&#8377;&nbsp;</span>
+          <span matSuffix>.00</span></mat-form-field
+        ><br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Reason</mat-label>
+          <input matInput placeholder="Reason" formControlName="purpose" />
+          <mat-icon matSuffix>help</mat-icon> </mat-form-field
+        ><br />
+        <button type="submit" id="send" mat-button="primary">Create</button>
+      </form></mat-card
+    >
+  </div>
+  <div class="second">
+    <mat-card class="stream-card">
+      <body class="content">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="requestID">
+            <th class="head" mat-header-cell *matHeaderCellDef>Request ID</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              {{ element.requestID }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="reason">
+            <th class="head" mat-header-cell *matHeaderCellDef>Purpose</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              {{ element.reason }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="amount">
+            <th class="head" mat-header-cell *matHeaderCellDef>QuotedAmount</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              {{ element.amount }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="send">
+            <th class="head" mat-header-cell *matHeaderCellDef>Send</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              <button
+                mat-button
+                matTooltip="Allocate Stream"
+                matTooltipPosition="right"
+                (click)="openDialog('Add', element)"
+                id="send"
+              >
+                <mat-icon>send</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </body>
+    </mat-card>
+  </div>
+</section>

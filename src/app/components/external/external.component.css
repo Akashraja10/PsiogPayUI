@@ -1,0 +1,137 @@
+#profile{
+    position: absolute;
+    right: 0;
+}
+.section{
+    display: flex;
+    width:100%;
+    height: 88%;
+    
+}
+.navbtn::after{  
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+ }
+ .navbtn:hover::after{
+    width: 100%;
+ }
+ span{
+    font-size: 16px;
+ }
+.main{
+    width:100%;
+}
+#fafa-font {
+    /* margin-top: 20px; */
+    text-align: center;
+    background-color:beige
+}
+
+#fafa-font i {
+    color: black; 
+}
+
+#fafa-font i:hover {
+    color: rgb(37, 37, 37); 
+}
+
+.container1 {
+    /* display: flex; */
+    width: 100%;
+
+}
+.container2 {
+    /* display: flex; */
+    width: 100%;
+
+}
+
+.box-1 {
+
+    width: 10%;
+    padding: 10px;
+    margin:auto;
+    /* margin-left: 55px; */
+    font-weight: 300;
+    cursor: pointer;
+    background-color: beige;
+    border-radius: 8px;
+}
+
+.box-1:hover {
+    background-color: bisque
+}
+
+.box-1 b {
+    color: black;
+    font-weight: 500;
+}
+
+.box-1 p {
+    text-align: center;
+    /* margin-bottom: 10px; */
+    text-decoration: none;
+}
+
+
+/* hi */
+.box-2 {
+
+    width: 10%;
+    padding: 10px;
+    margin: auto;
+    /* margin-left: 55px; */
+    font-weight: 300;
+    cursor: pointer;
+    background-color: beige;
+    border-radius: 8px;
+}
+
+.box-2:hover {
+    background-color: bisque;
+}
+
+.box-2 b {
+    color: black;
+    font-weight: 500;
+}
+
+.box-2 p {
+    text-align: center;
+    /* margin-bottom: 10px; */
+    text-decoration: none;
+}
+
+
+.container3{
+    width:80%;
+    margin-right: 30px;
+    margin-top: 40px;
+ }
+ .myform{
+    padding: 10px;
+    background-color:beige;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5); 
+    border-radius: 8px;
+    text-align: center;
+ }
+ #send{
+    
+    /* background-color:#63b32e; */
+    border: none;
+    padding: 2px 1px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 1px 2px;
+    cursor: pointer;
+    background-color: #FE4066;
+    border-radius: 6px;
+    color: white;
+  
+}

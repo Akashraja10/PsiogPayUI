@@ -22,7 +22,19 @@ import { IndividualComponent } from './components/individual/individual.componen
 import { MatMenuModule} from '@angular/material/menu';
 import { WalletComponent } from './components/wallet/wallet.component';
 import { PaymentsuccessfulComponent } from './components/paymentsuccessful/paymentsuccessful.component';
-
+import { ExternalComponent } from './components/external/external.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import { SampleComponent } from './components/sample/sample.component';
+import { MatTableModule } from '@angular/material/table';
+import { TransferComponent } from './components/individual/transfer/transfer.component'
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { ModelTransferComponent } from './components/wallet/model-transfer/model-transfer.component';
+import { ForgetpasswordComponent } from './components/forgetpassword/forgetpassword.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { RequestComponent } from './components/request/request.component';
+import { ReqTransferComponent } from './components/request/req-transfer/req-transfer.component';
 
 
 export function tokenGetter() { 
@@ -39,7 +51,14 @@ export function tokenGetter() {
     IndividualComponent,
     WalletComponent,
     PaymentsuccessfulComponent,
-    
+    ExternalComponent,
+    SampleComponent,
+    TransferComponent,
+    ModelTransferComponent,
+    ForgetpasswordComponent,
+    BarChartComponent,
+    RequestComponent,
+    ReqTransferComponent
   ],
   imports: [
     HttpClientModule,
@@ -57,6 +76,14 @@ export function tokenGetter() {
     MatSelectModule,
     MatToolbarModule,
     MatMenuModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSidenavModule,
+       
+    
+ 
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -65,7 +92,10 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [],
+  providers: [/*{
+    provide: MatDialogRef,
+  }*/],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

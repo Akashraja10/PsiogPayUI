@@ -1,10 +1,8 @@
 <section class="bg">
   <div class="center-content">
-    <!-- <div class="logo">
-      <img src="../../images/logo.png" />
-    </div> -->
+    <!-- <img class="image" src="/src/assets/logo.jpg" /> -->
     <mat-card class="example-card">
-      <mat-card-title>Login</mat-card-title><br />
+      <mat-card-title><h1>Login</h1></mat-card-title><br />
       <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <mat-form-field class="example-full-width">
           <mat-label>Username</mat-label>
@@ -22,19 +20,36 @@
           <mat-label>Password</mat-label>
           <input
             matInput
-            type="password"
-            placeholder="Password"
+            [type]="hide ? 'password' : 'text'"
             formControlName="Password"
           />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
           <mat-error *ngIf="Password?.errors?.['required']">
             Password is required
-          </mat-error>
-          <mat-icon matSuffix>vpn_key</mat-icon> </mat-form-field
+          </mat-error> </mat-form-field
         ><br /><br />
-        <button type="submit" mat-button color="primary">Submit</button>
+        <p>
+          <a class="tag" [routerLink]="['/forgetpassword']">Forget Password?</a>
+        </p>
+        <button type="submit" mat-button="primary">Submit</button>
+        <div>
+          <br />
+          <p>
+            New to our platform?&nbsp;<a class="tag" [routerLink]="['/signup']"
+              >SignUp!</a
+            >
+          </p>
+        </div>
       </form>
     </mat-card>
-    <span>New to our platform?<a [routerLink]="['/signup']">SignUp!</a></span>
   </div>
 </section>
 

@@ -1,12 +1,63 @@
-<h1>DashBoard</h1>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button class="navbtn" mat-button routerLink="">
+      <span>About</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="">
+      <span>Contact</span>&nbsp;
+    </button>
 
-<div style="color: blue">
-  <h2>YOU ARE LOGGED IN</h2>
-</div>
-<br />
-<button>
-  <a [routerLink]="['individual']" class="one-one">Individual Transaction</a>
-</button>
-<button *ngIf="isUserAuthenticated()">
-  <a class="logout" (click)="logOut()">Logout</a>
-</button>
+    <button class="navbtn" id="profile" mat-button [matMenuTriggerFor]="menu">
+      <span>{{ fullName }}</span>
+    </button>
+
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <mat-icon>notification_important</mat-icon>
+      </button>
+      <span *ngIf="notificationCount > 0" class="badge badge-danger">{{
+        notificationCount
+      }}</span>
+    </div>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
+      <button mat-menu-item *ngIf="isUserAuthenticated()">
+        <a class="logout" (click)="logOut()">Logout</a>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <button mat-raised-button>
+      <a [routerLink]="['individual']" class="one">Individual</a></button
+    ><br /><br />
+    <button mat-raised-button>
+      <a [routerLink]="['external']" class="one">External</a></button
+    ><br /><br />
+    <button mat-raised-button>
+      <a [routerLink]="['wallet']" class="one">Wallet</a></button
+    ><br /><br />
+    <button mat-raised-button *ngIf="isUserAuthenticated()">
+      <a class="logout" (click)="logOut()">Logout</a></button
+    ><br /><br />
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <!-- <div class="chart-container">
+      <canvas id="MyChart" width="200" height="200">{{ chart }}</canvas>
+    </div> -->
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+</mat-drawer-container>

@@ -2,14 +2,26 @@
   href="https://fonts.googleapis.com/icon?family=Material+Icons"
   rel="stylesheet"
 />
-<mat-toolbar color="primary">
+<mat-toolbar>
   <mat-toolbar-row>
-    <button mat-button routerLink="/dashboard">Home</button>
-    <button mat-button routerLink="">About</button>
-    <button mat-button routerLink="">Contact</button>&nbsp;
+    <button class="navbtn" mat-button routerLink="/dashboard">
+      <mat-icon>arrow_back</mat-icon>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="">
+      <span>About</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="">
+      <span>Contact</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="/dashboard/external">
+      <span>External</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="/dashboard/request">
+      <span>Request</span>&nbsp;
+    </button>
 
-    <button class="profile" mat-button [matMenuTriggerFor]="menu">
-      {{ fullName }}
+    <button class="navbtn" id="profile" mat-button [matMenuTriggerFor]="menu">
+      <span>{{ fullName }}</span>
     </button>
 
     <mat-menu #menu="matMenu">
@@ -22,39 +34,49 @@
 </mat-toolbar>
 
 <section class="section">
-  <div class="container1">
-    <table class="mytable" *ngIf="employee && employee.length > 0"></table>
-    <thead class="head">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-      </tr>
-    </thead>
-    <tbody class="list">
-      <tr *ngFor="let emp of employee">
-        <td>{{ emp.empId }}</td>
-        <td>{{ emp.empFname }}</td>
-        <td>
-          <span>&#8377;</span>
-          <button
-            mat-raised-button
-            color="primary"
-            mat-button
-            (click)="showForm = !showForm"
-            id="send"
-          >
-            Send
-          </button>
-        </td>
-      </tr>
-    </tbody>
-    <p *ngIf="!employee || employee.length <= 0">No Employees Found</p>
-  </div>
+  <mat-card class="stream-card">
+    <body class="content">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="empId">
+          <th class="head" mat-header-cell *matHeaderCellDef>Employee ID</th>
+          <td mat-cell class="tablecontent" *matCellDef="let element">
+            {{ element.empId }}
+          </td>
+        </ng-container>
 
-  <div class="container2" *ngIf="showForm">
+        <ng-container matColumnDef="empFname">
+          <th class="head" mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell class="tablecontent" *matCellDef="let element">
+            {{ element.empFname }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="send">
+          <th class="head" mat-header-cell *matHeaderCellDef>Send</th>
+          <td mat-cell class="tablecontent" *matCellDef="let element">
+            <button
+              mat-button
+              matTooltip="Allocate Stream"
+              matTooltipPosition="right"
+              (click)="openDialog('Add', element)"
+              id="send"
+            >
+              <mat-icon>send</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </body>
+  </mat-card>
+</section>
+
+<!-- <div class="container2" *ngIf="showForm">
     <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
     <ng-template #formTemplate>
-      <form [formGroup]="transferForm" (ngSubmit)="submit()">
+      <form class="myform" [formGroup]="transferForm" (ngSubmit)="submit()">
         <mat-form-field>
           <input
             matInput
@@ -77,10 +99,38 @@
           <input matInput placeholder="Receiver" formControlName="recieverId" />
         </mat-form-field>
         <br />
-        <button type="submit" mat-raised-button color="primary">
-          Transfer
-        </button>
+        <button type="submit" id="send" mat-raised-button>Transfer</button>
       </form>
     </ng-template>
   </div>
-</section>
+</section> -->
+
+<!-- <section class="section">
+  <div class="container1">
+    <table class="mytable" *ngIf="employee && employee.length > 0"></table>
+    <thead class="list">
+      <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr *ngFor="let emp of employee">
+        <td>{{ emp.empId }}</td>
+        <td>{{ emp.empFname }}</td>
+        <td>
+          <span>&#8377;&nbsp;</span>
+          <button
+            mat-raised-button
+            mat-button
+            (click)="showForm = !showForm"
+            id="send"
+          >
+            Send
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <p *ngIf="!employee || employee.length <= 0">No Employees Found</p>
+  </div> -->

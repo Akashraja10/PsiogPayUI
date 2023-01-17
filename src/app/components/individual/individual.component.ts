@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -7,7 +7,11 @@ import { Employee } from 'src/app/models/employee.model';
 import { AuthGuard } from 'src/app/services/authguard.service';
 import { environment } from 'src/environments/environment';
 import { EmployeeService } from '../../services/employee.service';
-
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { TransferComponent } from './transfer/transfer.component';
 
 
 @Component({
@@ -15,13 +19,15 @@ import { EmployeeService } from '../../services/employee.service';
   templateUrl: './individual.component.html',
   styleUrls: ['./individual.component.css']
 })
+
+
 export class IndividualComponent implements OnInit {
   baseApiUrl: string =environment.baseApiUrl;
+  
+  displayedColumns: string[] = ['empId', 'empFname', 'send'];
+  dataSource = new MatTableDataSource();
 
-  //employees: Employee[]=[];
-  //employees:any;
-
-  employee:any;
+  //employee:any;
   public fullName: string="";
   public id: Number=(0);
   showForm = false;
@@ -37,9 +43,12 @@ export class IndividualComponent implements OnInit {
     private jwtHelper: JwtHelperService,
     private router: Router,
     private auth:AuthGuard,
-    private employeeService:EmployeeService,){}
+    private employeeService:EmployeeService,
+    public dialog: MatDialog,
+    ){}
 
   ngOnInit(): void {
+
       this.employeeService.getFullNameFromStore()
       .subscribe(val=>{
         let fullNameFromToken=this.auth.getFullNameFromToken();
@@ -55,16 +64,24 @@ export class IndividualComponent implements OnInit {
         console.log(this.id)
       });
 
-
-      this.http.get(this.baseApiUrl+"/api/Employee/"+this.id).subscribe({
-        next:(employee)=>{
-           console.log(employee); 
-           this.employee=employee;  
-        },
-        error: (response)=>{
-          console.log(response);
+      this.http.get(this.baseApiUrl+"/api/Employee/"+this.id).subscribe(  
+        (data: any) => {  this.dataSource=new  MatTableDataSource(data) as any ;
+        console.log(this.dataSource);       
+      }
+        ,(err: any)=>{  
+          console.log(err);  
         }
-      });
+      )
+ 
+      // this.http.get(this.baseApiUrl+"/api/Employee/"+this.id).subscribe({
+      //   next:(employee)=>{
+      //      console.log(employee); 
+      //      this.employee=employee;  
+      //   },
+      //   error: (response)=>{
+      //     console.log(response);
+      //   }
+      // });
     };
   
 
@@ -82,19 +99,30 @@ export class IndividualComponent implements OnInit {
       this.router.navigate(['login']);
     }
 
-    submit(){
-      this.http.post(this.baseApiUrl+"/api/Individual/individual",this.transferForm.value)
-      .subscribe({ 
-        next:(res)=>{
-          console.log(res),
-          this.router.navigate(['paysuccess']);
-        },
-        error:(err)=>{
-          console.log(err);
-        }
+
+    openDialog(action: any,obj: { action: any; }){
+      obj.action = action;
+      console.log(obj);
+
+      const dialogRef = this.dialog.open(TransferComponent, {
+        width: '30em',
+        height: '250px',       
+        data:obj
+        
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        
       });
     }
-  }
+
+
+}
+
+
+
+
 
 
   // getData(empid: Number) {

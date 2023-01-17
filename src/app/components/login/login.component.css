@@ -1,22 +1,31 @@
+body{
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+h1{
+  font-weight: bold;
+}
+/* .image{
+  display: block;
+  width: 109px;
+} */
 .example-card {
     max-width: 400px;
-    background-color:rgb(57, 206, 206);
-
+    background-color:white;
+    border-radius: 10px;
   }
-  .bg{
-    
-    /* background-image: url('../../images/1546573355503.jpg'); */
-    background-image: linear-gradient(to right, rgba(57, 206, 206,0.9), rgba(89, 255, 92, 0.9));
+
+.bg{
+    background-color: beige;
     height: 100%;
   }
 .mat-card-header{
   margin-left: 160px;
+ 
 }
   
-  .center-content {
+.center-content {
       padding-top: 100px;
-      text-align: -webkit-center;
-      
+      text-align: -webkit-center;    
   }
   .example-form {
     min-width: 150px;
@@ -33,6 +42,10 @@
     width: 100%;
     color: white;
     height: 40px;
-    background-color: #63b32e;
+    background-color: #FE4066;
+    border-radius: 6px;
     
+  }
+  .tag{
+    color: #FE4066;
   }

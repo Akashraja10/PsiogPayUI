@@ -1,11 +1,11 @@
 .bg{   
-  /* background-image: url('../../images/1546573355503.jpg'); */
-  background-image: linear-gradient(to right, rgba(57, 206, 206,0.9), rgba(89, 255, 92, 0.9));
+  background-color: beige;
   height: 100%;
 }
 .example-card {
-    max-width: 400px;
-    background-color:rgb(57, 206, 206);
+  max-width: 400px;
+  background-color:white;
+  border-radius: 10px;
   }
   .mat-card-header{
     margin-left: 160px;
@@ -15,8 +15,7 @@
       text-align: -webkit-center;
   }
 
-  .example-full-width {
-    
+  .example-full-width { 
     width: 100%;
   }
   .mat-button{
@@ -24,5 +23,5 @@
     width: 100%;
     color: white;
     height: 40px;
-    background-color: #63b32e;
+    background-color: #FE4066;
   }

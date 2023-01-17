@@ -1,0 +1,102 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button class="navbtn" mat-button routerLink="/dashboard/individual">
+      <mat-icon>arrow_back</mat-icon>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="">
+      <span>About</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="">
+      <span>Contact</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="/dashboard/individual">
+      <span>Individual</span>&nbsp;
+    </button>
+    <button class="navbtn" mat-button routerLink="/dashboard/request">
+      <span>Request</span>&nbsp;
+    </button>
+
+    <button class="navbtn" id="profile" mat-button [matMenuTriggerFor]="menu">
+      <span>{{ fullName }}</span>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
+      <button mat-menu-item *ngIf="isUserAuthenticated()">
+        <a class="logout" (click)="logOut()">Logout</a>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div id="fafa-font">
+  <i class="fa fa-money fa-5x" aria-hidden="true"></i>
+</div>
+<br />
+<section class="section">
+  <br /><br />
+  <div class="main">
+    <section class="container1">
+      <div class="box-1">
+        <p (click)="showForm = !showForm"><b>FOOD</b></p>
+      </div>
+      <br /><br />
+      <div class="box-1">
+        <p (click)="showForm = !showForm"><b>CAB</b></p>
+      </div>
+    </section>
+    <br /><br />
+    <section class="container2">
+      <div class="box-2">
+        <p (click)="showForm = !showForm"><b>BEVERAGE</b></p>
+      </div>
+      <br /><br />
+      <div class="box-2">
+        <p (click)="showForm = !showForm"><b>OTHER EXPENSES</b></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="container3" *ngIf="showForm">
+    <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+    <ng-template #formTemplate>
+      <form class="myform" [formGroup]="transferForm" (ngSubmit)="submit()">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Amount"
+            type="number"
+            formControlName="amount"
+          />
+          <span matPrefix>&#8377;&nbsp;</span>
+          <span matSuffix>.00</span>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Description"
+            formControlName="content"
+          /> </mat-form-field
+        ><br />
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="myid"
+            placeholder="myid"
+            formControlName="empId"
+          /> </mat-form-field
+        ><br />
+        <button type="submit" mat-raised-button id="send">Transfer</button>
+      </form>
+    </ng-template>
+  </div>
+</section>

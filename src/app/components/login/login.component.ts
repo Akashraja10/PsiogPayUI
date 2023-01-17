@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     Password: new FormControl('',Validators.required),
   });
   invalidLogin: boolean | undefined;
+  hide = true;
 
   constructor(private router: Router, private http: HttpClient) { }
    ngOnInit(): void {
