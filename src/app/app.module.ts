@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 import { JwtModule } from "@auth0/angular-jwt";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +41,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { RecenttransactionComponent } from './components/recenttransaction/recenttransaction.component';
 
 
+
 export function tokenGetter() { 
   return localStorage.getItem("jwt"); 
 }
@@ -64,7 +66,8 @@ export function tokenGetter() {
     ReqTransferComponent,
     LendTransferComponent,
     ContactComponent,
-    RecenttransactionComponent
+    RecenttransactionComponent,
+   
   ],
   imports: [
     HttpClientModule,

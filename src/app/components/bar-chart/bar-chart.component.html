@@ -1,3 +1,6 @@
 <div class="chart-container">
   <canvas id="MyChart">{{ chart }}</canvas>
 </div>
+<button mat-raised-button *ngIf="isUserAuthenticated()">
+  <a class="logout" (click)="logOut()">Logout</a></button
+><br /><br />

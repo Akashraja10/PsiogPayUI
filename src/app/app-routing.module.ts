@@ -19,9 +19,18 @@ import { AuthGuard } from './services/authguard.service';
 
 const routes: Routes = [
   {
+    path: '',
+    component: SampleComponent,
+  },
+  {
+    path: '*',
+    component: SampleComponent,
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },
+
   {
     path: 'signup',
     component: SignupComponent,
@@ -72,11 +81,11 @@ const routes: Routes = [
     component: PaymentsuccessfulComponent,
     canActivate:[AuthGuard]
   },
-  {
-    path:'sample',
-    component: SampleComponent,
-    canActivate:[AuthGuard]
-  },
+  // {
+  //   path:'sample',
+  //   component: SampleComponent,
+  //   canActivate:[AuthGuard]
+  // },
     {
     path:'forgetpassword',
     component: ForgetpasswordComponent,

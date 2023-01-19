@@ -70,6 +70,8 @@ export class ReqTransferComponent implements OnInit {
       },
       error:(err)=>{
         console.log(err);
+        this.dialogRef.close({event:'Cancel'});
+        this.router.navigate([""]);
       }
     });
   }

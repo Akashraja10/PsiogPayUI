@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -31,20 +32,13 @@ export class BarChartComponent implements OnInit {
     private jwtHelper: JwtHelperService,
     private router: Router,
     private auth:AuthGuard,
+    private _snackBar: MatSnackBar,
     
     ) { }
 
   ngOnInit(): void {
 
      this.createChart();
-
-     this.employeeService.getIdFromStore()
-      .subscribe(val=>{
-        let idFromToken=this.auth.getidFromToken();
-        this.id=val || idFromToken
-        this.myid=this.id;
-        console.log(this.id)
-      });
 
       this.chartData = new Chart("MyChart", {
         type: 'bar', //this denotes tha type of chart
@@ -91,8 +85,30 @@ export class BarChartComponent implements OnInit {
       this.chartData.update();
       console.log(this.chartData)
   });
+  
+  }
+  isUserAuthenticated = (): boolean => {
+    const token = localStorage.getItem("jwt");
+    if (token && !this.jwtHelper.isTokenExpired(token)){
+      return true;
+    }
+    return false;
+  }
+  
+  logOut = () => {
+    localStorage.removeItem("jwt");
+    this.router.navigate(['login']);
+    this.openSnackBar('Logged Out!','Close'); 
+  }
+  openSnackBar(message: string, action: string) 
+  {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right'
+    });
+  }
  
     
-  }
 
 }

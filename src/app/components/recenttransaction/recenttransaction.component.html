@@ -29,9 +29,6 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
-      <button mat-menu-item routerLink="/dashboard/recenttransaction">
-        Recent Transaction
-      </button>
       <button mat-menu-item *ngIf="isUserAuthenticated()">
         <a class="logout" (click)="logOut()">Logout</a>
       </button>

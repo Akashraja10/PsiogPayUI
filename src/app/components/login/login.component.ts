@@ -44,7 +44,10 @@ submit (){
         this.router.navigate(["dashboard"]);
         console.log(this.loginForm.value);
       },
-    error: (err: HttpErrorResponse) => this.invalidLogin = true
+    error: (err: HttpErrorResponse) =>{ 
+      this.invalidLogin = true;
+      this.router.navigate([""]);
+    }
   })    
     }
   

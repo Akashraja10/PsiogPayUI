@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -30,7 +31,8 @@ export class RecenttransactionComponent implements OnInit {
     private jwtHelper: JwtHelperService,
     private router: Router,
     private auth:AuthGuard,
-    private employeeService:EmployeeService,) { }
+    private employeeService:EmployeeService,
+    private _snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
 
@@ -89,9 +91,18 @@ export class RecenttransactionComponent implements OnInit {
   logOut = () => {
     localStorage.removeItem("jwt");
     this.router.navigate(['login']);
+    this.openSnackBar('Logged Out!','Close'); 
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  openSnackBar(message: string, action: string) 
+  {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right'
+    });
   }
 }

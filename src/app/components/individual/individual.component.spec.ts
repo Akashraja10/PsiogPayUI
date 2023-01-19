@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IndividualComponent } from './individual.component';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('IndividualComponent', () => {
   let component: IndividualComponent;
@@ -8,8 +10,14 @@ describe('IndividualComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IndividualComponent ]
+      imports: [HttpClientTestingModule],
+      declarations: [ IndividualComponent ],
+      providers: [
+        { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        JwtHelperService
+    ]
     })
+    
     .compileComponents();
 
     fixture = TestBed.createComponent(IndividualComponent);

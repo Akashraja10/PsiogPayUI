@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthGuard } from 'src/app/services/authguard.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import {Chart} from 'chart.js/auto';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private jwtHelper: JwtHelperService, private router: Router
     ,private http: HttpClient,private employeeService:EmployeeService,
-    private auth:AuthGuard,) { }
+    private auth:AuthGuard,private _snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
 
@@ -60,6 +61,15 @@ export class DashboardComponent implements OnInit {
   logOut = () => {
     localStorage.removeItem("jwt");
     this.router.navigate(['login']);
+    this.openSnackBar('Logged Out!','Close'); 
+  }
+  openSnackBar(message: string, action: string) 
+  {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right'
+    });
   }
   // createsChart(){
   

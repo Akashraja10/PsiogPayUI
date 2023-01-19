@@ -59,7 +59,10 @@ export class SignupComponent implements OnInit {
         this.router.navigate(["login"]);
         console.log(this.signUpForm.value);
       },
-    error: (err: HttpErrorResponse) => this.invalidLogin = true
+    error: (err: HttpErrorResponse) => {
+      this.invalidLogin = true;
+      this.router.navigate([""]);
+    }
   })    
     }
   }

@@ -1,42 +1,5 @@
-<mat-card class="stream-card">
-  <body class="content">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!-- Employee Id -->
-      <ng-container matColumnDef="empId">
-        <th mat-header-cell *matHeaderCellDef class="tablehead">Employee ID</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.empId }}
-        </td>
-      </ng-container>
-
-      <!-- Employee Name -->
-      <ng-container matColumnDef="empFname">
-        <th mat-header-cell *matHeaderCellDef class="tablehead">
-          Employee Name
-        </th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.empFname }}
-        </td>
-      </ng-container>
-
-      <!-- <ng-container matColumnDef="INITIATE">
-        <th mat-header-cell *matHeaderCellDef class="tablehead">Send</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          <button
-            mat-button
-            matTooltip="Allocate Stream"
-            matTooltipPosition="right"
-            (click)="openDialog('Add', element)"
-            mat-raised-button
-            color="primary"
-          >
-            Send
-          </button>
-        </td>
-      </ng-container> -->
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-  </body>
-</mat-card>
+<div class="error-container">
+  <h1>404 Error</h1>
+  <p>Sorry, the page you are looking for could not be found.</p>
+  <button routerLink="/dashboard">Home</button>
+</div>

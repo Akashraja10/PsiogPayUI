@@ -12,6 +12,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { TransferComponent } from './transfer/transfer.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -45,6 +46,7 @@ export class IndividualComponent implements OnInit {
     private auth:AuthGuard,
     private employeeService:EmployeeService,
     public dialog: MatDialog,
+    private _snackBar: MatSnackBar,
     ){}
 
   ngOnInit(): void {
@@ -71,18 +73,8 @@ export class IndividualComponent implements OnInit {
         ,(err: any)=>{  
           console.log(err);  
         }
-      )
- 
-      // this.http.get(this.baseApiUrl+"/api/Employee/"+this.id).subscribe({
-      //   next:(employee)=>{
-      //      console.log(employee); 
-      //      this.employee=employee;  
-      //   },
-      //   error: (response)=>{
-      //     console.log(response);
-      //   }
-      // });
-    };
+      );
+    }
   
 
 
@@ -97,6 +89,7 @@ export class IndividualComponent implements OnInit {
     logOut = () => {
       localStorage.removeItem("jwt");
       this.router.navigate(['login']);
+      this.openSnackBar('Logged Out!','Close'); 
     }
 
 
@@ -119,6 +112,14 @@ export class IndividualComponent implements OnInit {
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+    openSnackBar(message: string, action: string) 
+    {
+      this._snackBar.open(message, action, {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right'
+      });
     }
 
 
