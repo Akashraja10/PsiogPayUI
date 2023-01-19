@@ -67,27 +67,37 @@
   <div class="second">
     <mat-card class="stream-card">
       <body class="content">
+        <mat-card-title><h1>Your Contribution</h1></mat-card-title>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <ng-container matColumnDef="requestID">
             <th class="head" mat-header-cell *matHeaderCellDef>Request ID</th>
             <td mat-cell class="tablecontent" *matCellDef="let element">
-              {{ element.requestID }}
-            </td>
-          </ng-container>
+              {{ element.requestID }}&nbsp;
+            </td> </ng-container
+          >&nbsp;
 
           <ng-container matColumnDef="reason">
             <th class="head" mat-header-cell *matHeaderCellDef>Purpose</th>
             <td mat-cell class="tablecontent" *matCellDef="let element">
-              {{ element.reason }}
-            </td>
-          </ng-container>
+              {{ element.reason }}&nbsp;
+            </td> </ng-container
+          >&nbsp;
 
-          <ng-container matColumnDef="amount">
+          <ng-container matColumnDef="quotedAmount">
             <th class="head" mat-header-cell *matHeaderCellDef>QuotedAmount</th>
             <td mat-cell class="tablecontent" *matCellDef="let element">
-              {{ element.amount }}
-            </td>
-          </ng-container>
+              {{ element.quotedAmount }}
+            </td> </ng-container
+          >&nbsp;
+
+          <ng-container matColumnDef="recievedAmount">
+            <th class="head" mat-header-cell *matHeaderCellDef>
+              RecievedAmount
+            </th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              {{ element.recievedAmount }}
+            </td> </ng-container
+          >&nbsp;
 
           <ng-container matColumnDef="send">
             <th class="head" mat-header-cell *matHeaderCellDef>Send</th>
@@ -106,6 +116,58 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </body>
+    </mat-card>
+  </div>
+</section>
+
+<section class="myclass2">
+  <div class="third">
+    <mat-card class="stream-card">
+      <body class="content">
+        <mat-card-title><h1>Your Payback</h1></mat-card-title>
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+          <ng-container matColumnDef="groupId">
+            <th class="head" mat-header-cell *matHeaderCellDef>Group ID</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              {{ element.groupId }}&nbsp;
+            </td> </ng-container
+          >&nbsp;
+
+          <ng-container matColumnDef="contributorId">
+            <th class="head" mat-header-cell *matHeaderCellDef>
+              Contributor Id
+            </th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              {{ element.contributorId }}&nbsp;
+            </td> </ng-container
+          >&nbsp;
+
+          <ng-container matColumnDef="amount">
+            <th class="head" mat-header-cell *matHeaderCellDef>Amount</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              {{ element.amount }}
+            </td> </ng-container
+          >&nbsp;
+
+          <ng-container matColumnDef="sent">
+            <th class="head" mat-header-cell *matHeaderCellDef>Send</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              <button
+                mat-button
+                matTooltip="Allocate Stream"
+                matTooltipPosition="right"
+                (click)="openDialog2('Add', element)"
+                id="send"
+              >
+                <mat-icon>send</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
         </table>
       </body>
     </mat-card>

@@ -10,11 +10,12 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-req-transfer',
-  templateUrl: './req-transfer.component.html',
-  styleUrls: ['./req-transfer.component.css']
+  selector: 'app-lend-transfer',
+  templateUrl: './lend-transfer.component.html',
+  styleUrls: ['./lend-transfer.component.css']
 })
-export class ReqTransferComponent implements OnInit {
+export class LendTransferComponent implements OnInit {
+
   baseApiUrl: string =environment.baseApiUrl;
 
   public fullName: string="";
@@ -24,22 +25,19 @@ export class ReqTransferComponent implements OnInit {
   myid: any;
 
   transferForm = new FormGroup({
-    reqId:new FormControl(),
-    contributorId: new FormControl(),
-    amount: new FormControl()
+    paybackAmount:new FormControl(),
+    groupId: new FormControl()
 });
-  
 
   constructor(private http: HttpClient,
     private jwtHelper: JwtHelperService,
     private router: Router,
     private auth:AuthGuard,
     private employeeService:EmployeeService,
-    public dialogRef: MatDialogRef<ReqTransferComponent>,
+    public dialogRef: MatDialogRef<LendTransferComponent>,
     private _snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
-    
     this.employeeService.getFullNameFromStore()
       .subscribe(val=>{
         let fullNameFromToken=this.auth.getFullNameFromToken();
@@ -58,7 +56,7 @@ export class ReqTransferComponent implements OnInit {
   }
 
   doAction(){
-    this.http.post (this.baseApiUrl+"/api/Group/group",this.transferForm.value,{
+    this.http.post (this.baseApiUrl+"/api/LendBack/lendback",this.transferForm.value,{
     headers: new HttpHeaders({statusText: 'OK'},) 
     })
     .subscribe({ 
@@ -85,6 +83,4 @@ export class ReqTransferComponent implements OnInit {
   });
 }
 
- }
-
-
+}

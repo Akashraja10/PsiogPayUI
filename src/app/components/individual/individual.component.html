@@ -10,14 +10,17 @@
     <button class="navbtn" mat-button routerLink="">
       <span>About</span>&nbsp;
     </button>
-    <button class="navbtn" mat-button routerLink="">
-      <span>Contact</span>&nbsp;
-    </button>
+    <a class="navbtn" href="https://formsubmit.co/el/rajemi"
+      ><button mat-button><span>Contact</span>&nbsp;</button></a
+    >
     <button class="navbtn" mat-button routerLink="/dashboard/external">
       <span>External</span>&nbsp;
     </button>
     <button class="navbtn" mat-button routerLink="/dashboard/request">
       <span>Request</span>&nbsp;
+    </button>
+    <button id="logo" mat-button routerLink="dashboard">
+      <img src="../../../assets/new.jpg" width="150px" />&nbsp;
     </button>
 
     <button class="navbtn" id="profile" mat-button [matMenuTriggerFor]="menu">
@@ -26,6 +29,9 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
+      <button mat-menu-item routerLink="/dashboard/recenttransaction">
+        Recent Transaction
+      </button>
       <button mat-menu-item *ngIf="isUserAuthenticated()">
         <a class="logout" (click)="logOut()">Logout</a>
       </button>
@@ -36,6 +42,15 @@
 <section class="section">
   <mat-card class="stream-card">
     <body class="content">
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. ium"
+          #input
+        />
+      </mat-form-field>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="empId">
           <th class="head" mat-header-cell *matHeaderCellDef>Employee ID</th>
@@ -68,6 +83,10 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of users"
+        ></mat-paginator>
       </table>
     </body>
   </mat-card>

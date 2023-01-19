@@ -17,11 +17,12 @@ export class BarChartComponent implements OnInit {
 
   baseApiUrl: string =environment.baseApiUrl;
   public id: Number=(0);
-  public chart: any;
   time:any;
   amount:any;
   myid: any;
   employee: any;
+  chartData: any;
+  chart:any;
 
 
   constructor(
@@ -30,9 +31,11 @@ export class BarChartComponent implements OnInit {
     private jwtHelper: JwtHelperService,
     private router: Router,
     private auth:AuthGuard,
+    
     ) { }
 
   ngOnInit(): void {
+
      this.createChart();
 
      this.employeeService.getIdFromStore()
@@ -42,37 +45,54 @@ export class BarChartComponent implements OnInit {
         this.myid=this.id;
         console.log(this.id)
       });
-  }
+
+      this.chartData = new Chart("MyChart", {
+        type: 'bar', //this denotes tha type of chart
+  
+        data: {// values on X-Axis
+          labels: this.time,
+           datasets: [
+            {
+              label: "Amount",
+              data: this.amount,
+              backgroundColor: 'blue'
+            },
+          ]
+        },
+        options: {
+          plugins:{
+          legend: {  
+            display: true ,
+            	      
+          },  
+        },
+          scales: {  
+            x: {
+              ticks: {  
+              display: false
+              }  
+            },  
+            y: {
+              ticks: {  
+              display: false
+              }  
+            },  
+        }
+      }
+      });
+    }
+  
 
   createChart(){
-    this.http.get(this.baseApiUrl+"/api/Individual/"+this.id).subscribe({
-      next:(employee)=>{
-         console.log(employee); 
-         this.employee=employee;  
-      },
-      error: (response)=>{
-        console.log(response);
-      }
-    });
-    this.chart = new Chart("MyChart", {
-      type: 'bar', //this denotes tha type of chart
-
-      data: {// values on X-Axis
-        labels: this.time,
-	       datasets: [
-          {
-            label: "Sales",
-            data: this.amount,
-            backgroundColor: 'blue'
-          },
-        ]
-      },
-      options: {
-        aspectRatio:2.5
-      }
-      
-    });
+    this.http.get(this.baseApiUrl+"/api/Individual/"+this.id).subscribe(data => {
+    
+      this.chartData.data.labels = this.chartData.time;
+      this.chartData.data.datasets[0].data = this.chartData.amount;
+      this.chartData.update();
+      console.log(this.chartData)
+  });
+ 
+    
   }
-
 
 }

@@ -3,23 +3,15 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        placeholder="Amount"
+        placeholder="PaybackAmount"
         type="number"
-        formControlName="amount"
+        formControlName="paybackAmount"
       />
       <span matPrefix>&#8377;&nbsp;</span>
       <span matSuffix>.00</span>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <input matInput placeholder="ReqId" formControlName="reqId" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <input
-        matInput
-        [(ngModel)]="myid"
-        placeholder="ContributorId"
-        formControlName="contributorId"
-      />
+      <input matInput placeholder="GroupId" formControlName="groupId" />
     </mat-form-field>
     <div mat-dialog-actions>
       <button class="button1" mat-button (click)="doAction()" id="send">

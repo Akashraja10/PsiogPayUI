@@ -35,6 +35,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { RequestComponent } from './components/request/request.component';
 import { ReqTransferComponent } from './components/request/req-transfer/req-transfer.component';
+import { LendTransferComponent } from './components/request/lend-transfer/lend-transfer.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { RecenttransactionComponent } from './components/recenttransaction/recenttransaction.component';
 
 
 export function tokenGetter() { 
@@ -58,7 +61,10 @@ export function tokenGetter() {
     ForgetpasswordComponent,
     BarChartComponent,
     RequestComponent,
-    ReqTransferComponent
+    ReqTransferComponent,
+    LendTransferComponent,
+    ContactComponent,
+    RecenttransactionComponent
   ],
   imports: [
     HttpClientModule,

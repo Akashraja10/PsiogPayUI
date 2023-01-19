@@ -9,6 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthGuard } from 'src/app/services/authguard.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { environment } from 'src/environments/environment';
+import { LendTransferComponent } from './lend-transfer/lend-transfer.component';
 import { ReqTransferComponent } from './req-transfer/req-transfer.component';
 
 @Component({
@@ -19,8 +20,10 @@ import { ReqTransferComponent } from './req-transfer/req-transfer.component';
 export class RequestComponent implements OnInit {
   baseApiUrl: string =environment.baseApiUrl;
 
-  displayedColumns: string[] = ['requestID', 'reason', 'amount','send'];
+  displayedColumns: string[] = ['requestID', 'reason', 'quotedAmount','recievedAmount','send'];
+  displayedColumns2:string[] = ['groupId', 'contributorId', 'amount','sent'];
   dataSource = new MatTableDataSource();
+  dataSource2 = new MatTableDataSource();
   
   public fullName: string="";
   public id: Number=(0);
@@ -28,7 +31,7 @@ export class RequestComponent implements OnInit {
   reqForm = new FormGroup({
     empId: new FormControl(),
     purpose: new FormControl(),
-    quotedAmount: new FormControl()
+    quotedAmount: new FormControl(),
 });
 myid:any;
 
@@ -64,6 +67,15 @@ myid:any;
           console.log(err);  
         }
       )
+
+      this.http.get(this.baseApiUrl+"/api/LendBack/"+this.id).subscribe(  
+        (data: any) => {  this.dataSource2=new  MatTableDataSource(data) as any ;
+        console.log(this.dataSource2);       
+      }
+        ,(err: any)=>{  
+          console.log(err);  
+        }
+      )
  
 
   }
@@ -87,6 +99,7 @@ myid:any;
       next:(res)=>{
         console.log(res),
         this.openSnackBar('Request Created Successfully !','Close'); 
+        this.reqForm.reset();
       },
       error:(err)=>{
         console.log(err);
@@ -107,6 +120,22 @@ myid:any;
     console.log(obj);
 
     const dialogRef = this.dialog.open(ReqTransferComponent, {
+      width: '30em',
+      height: '250px',       
+      data:obj
+      
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    });
+  }
+  openDialog2(action: any,obj: { action: any; }){
+    obj.action = action;
+    console.log(obj);
+
+    const dialogRef = this.dialog.open(LendTransferComponent, {
       width: '30em',
       height: '250px',       
       data:obj

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ExternalComponent } from './components/external/external.component';
 import { ForgetpasswordComponent } from './components/forgetpassword/forgetpassword.component';
@@ -8,6 +9,7 @@ import { IndividualComponent } from './components/individual/individual.componen
 import { TransferComponent } from './components/individual/transfer/transfer.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentsuccessfulComponent } from './components/paymentsuccessful/paymentsuccessful.component';
+import { RecenttransactionComponent } from './components/recenttransaction/recenttransaction.component';
 import { RequestComponent } from './components/request/request.component';
 import { SampleComponent } from './components/sample/sample.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -78,9 +80,18 @@ const routes: Routes = [
     {
     path:'forgetpassword',
     component: ForgetpasswordComponent,
+    
+  },
+  {
+    path:'contact',
+    component: ContactComponent,
     canActivate:[AuthGuard]
   },
-
+  {
+    path:'dashboard/recenttransaction',
+    component: RecenttransactionComponent,
+    canActivate:[AuthGuard]
+  }
 
 ];
 

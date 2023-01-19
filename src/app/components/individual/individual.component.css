@@ -4,6 +4,7 @@
 }
 .section{
     width:100%;
+    height: 89%;
     background-color: beige;
 }
 .container1{
@@ -131,3 +132,9 @@
   .mat-row:hover {
     background-color:#eeeeee;
   }
+  a{
+   color: black;
+  }
+  #logo{
+   left: 130px;
+ }

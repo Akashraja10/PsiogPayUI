@@ -1,0 +1,55 @@
+<!-- <form style="width: 50%; margin: auto">
+
+  <mat-card>
+    <h1>Material Form</h1>
+    <form
+      [formGroup]="transferForm"
+      (ngSubmit)="register()"
+      action="https://formsubmit.co/ff6009165528bd642179184c9d55a018"
+      method="POST"
+    >
+      <mat-form-field style="width: 100%">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email" />
+      </mat-form-field>
+
+      <button type="ngSubmit" mat-raised-button color="primary">
+        {{ buttionText }}
+      </button>
+    </form>
+  </mat-card>
+</form> -->
+
+<div class="container">
+  <h1>Contact Form</h1>
+
+  <form action="https://formsubmit.co/el/rajemi" method="POST">
+    <input type="text" name="Name" placeholder="Full Name" required />
+
+    <input type="email" name="Email" placeholder="Email" required />
+
+    <select name="Continent">
+      <option>Africa</option>
+
+      <option>Antarctica</option>
+      <option>Asia</option>
+
+      <option>Australia</option>
+
+      <option>Europe</option>
+
+      <option>North America</option>
+
+      <option>South America</option>
+    </select>
+
+    <textarea name="Message" placeholder="Message" required></textarea>
+
+    <button type="submit">Send</button>>
+  </form>
+</div>

@@ -9,9 +9,55 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+    background-color: beige;
   }
   
   .example-sidenav {
-    padding: 20px;
+    padding: 70px;
     background-color: bisque;
   }
+  #profile{
+    position: absolute;
+    right: 0;
+}
+.navbtn{
+  color:black;
+}
+.navbtn::after{  
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #f44336;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+.navbtn:hover::after{
+  width: 100%;
+}
+span{
+  font-size: 16px;
+}
+.one{
+  text-decoration: none;
+  color: black;
+  font-size: large;
+}
+.one::after{  
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #f44336;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+.one:hover::after{
+  width: 100%;
+}
+.logout{
+  font-size: large;
+}
+#logo{
+  left: 300px;
+}

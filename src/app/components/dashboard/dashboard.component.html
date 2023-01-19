@@ -1,16 +1,11 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <button class="navbtn" mat-button routerLink="">
-      <span>About</span>&nbsp;
-    </button>
-    <button class="navbtn" mat-button routerLink="">
-      <span>Contact</span>&nbsp;
-    </button>
-
-    <button class="navbtn" id="profile" mat-button [matMenuTriggerFor]="menu">
-      <span>{{ fullName }}</span>
-    </button>
-
+      <span>About</span>&nbsp;</button
+    >&nbsp;&nbsp;
+    <a class="navbtn" href="https://formsubmit.co/el/rajemi"
+      ><button mat-button><span>Contact</span>&nbsp;</button></a
+    >&nbsp;&nbsp;
     <div class="dropdown">
       <button
         class="btn btn-secondary dropdown-toggle"
@@ -26,6 +21,13 @@
         notificationCount
       }}</span>
     </div>
+    <button id="logo" mat-button routerLink="dashboard">
+      <img src="../../../assets/new.jpg" width="150px" />&nbsp;
+    </button>
+
+    <button class="navbtn" id="profile" mat-button [matMenuTriggerFor]="menu">
+      <span>{{ fullName }}</span>
+    </button>
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
@@ -40,13 +42,16 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <button mat-raised-button>
       <a [routerLink]="['individual']" class="one">Individual</a></button
-    ><br /><br />
+    ><br /><br /><br />
     <button mat-raised-button>
       <a [routerLink]="['external']" class="one">External</a></button
-    ><br /><br />
+    ><br /><br /><br />
     <button mat-raised-button>
       <a [routerLink]="['wallet']" class="one">Wallet</a></button
-    ><br /><br />
+    ><br /><br /><br />
+    <button mat-raised-button>
+      <a [routerLink]="['request']" class="one">Request</a></button
+    ><br /><br /><br />
     <button mat-raised-button *ngIf="isUserAuthenticated()">
       <a class="logout" (click)="logOut()">Logout</a></button
     ><br /><br />
@@ -56,8 +61,9 @@
     <!-- <div class="chart-container">
       <canvas id="MyChart" width="200" height="200">{{ chart }}</canvas>
     </div> -->
+
     <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
+      <img src="../../../assets/logo.jpg" width="400px" />
     </button>
   </div>
 </mat-drawer-container>
