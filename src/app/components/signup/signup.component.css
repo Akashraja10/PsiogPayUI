@@ -1,8 +1,21 @@
 .bg{   
   background-color: beige;
   height: 100%;
+  display: flex;
+}
+.giphy{
+  width:40%;
+  height: 50%;
+
+}
+.img{
+  width:60%;
+  height: 90%;
+  padding: 150px 80px 80px 80px;
+  
 }
 .example-card {
+  padding-top: 20px;
   max-width: 400px;
   background-color:white;
   border-radius: 10px;
@@ -11,7 +24,7 @@
     margin-left: 160px;
   }
   .center-content {
-      /* margin-top: 100px; */
+    padding-top: 20px;
       text-align: -webkit-center;
   }
 

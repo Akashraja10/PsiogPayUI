@@ -88,4 +88,10 @@ table{
  .mat-row:hover {
    background-color:#eeeeee;
  }
+ .empty{
+   margin-top: 100px;
+   font-size: x-large;
+   font-weight: 600;
+   text-align: center;
+ }
  

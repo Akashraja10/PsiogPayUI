@@ -1,6 +1,75 @@
-<div class="chart-container">
+<!-- <div class="chart-container">
   <canvas id="MyChart">{{ chart }}</canvas>
-</div>
-<button mat-raised-button *ngIf="isUserAuthenticated()">
-  <a class="logout" (click)="logOut()">Logout</a></button
-><br /><br />
+</div> -->
+
+<section class="section">
+  <mat-card class="stream-card">
+    <body class="content">
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. ium"
+          #input
+        />
+      </mat-form-field>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="empId">
+          <th class="head" mat-header-cell *matHeaderCellDef>Employee ID</th>
+          <td mat-cell class="tablecontent" *matCellDef="let element">
+            {{ element.empId }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+          <th class="head" mat-header-cell *matHeaderCellDef>Username</th>
+          <td mat-cell class="tablecontent" *matCellDef="let element">
+            {{ element.username }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="empFname">
+          <th class="head" mat-header-cell *matHeaderCellDef>First Name</th>
+          <td mat-cell class="tablecontent" *matCellDef="let element">
+            {{ element.empFname }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="age">
+          <th class="head" mat-header-cell *matHeaderCellDef>Age</th>
+          <td mat-cell class="tablecontent" *matCellDef="let element">
+            {{ element.age }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="send">
+          <th class="head" mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell class="tablecontent" *matCellDef="let element">
+            <button
+              mat-button
+              matTooltip="Allocate Stream"
+              matTooltipPosition="right"
+              (click)="openDialog('Add', element)"
+              id="send"
+            >
+              <mat-icon>send</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of users"
+        ></mat-paginator>
+      </table>
+    </body>
+  </mat-card>
+  <div class="logOut">
+    <button mat-raised-button>
+      <a class="logout" (click)="logOut()">Logout</a></button
+    ><br /><br />
+  </div>
+</section>

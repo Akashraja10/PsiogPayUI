@@ -22,6 +22,9 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
+      <button mat-menu-item routerLink="/dashboard/recenttransaction">
+        Recent Transaction
+      </button>
       <button mat-menu-item *ngIf="isUserAuthenticated()">
         <a class="logout" (click)="logOut()">Logout</a>
       </button>
@@ -76,6 +79,13 @@
             </td> </ng-container
           >&nbsp;
 
+          <ng-container matColumnDef="name">
+            <th class="head" mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              {{ element.name }}&nbsp;
+            </td> </ng-container
+          >&nbsp;
+
           <ng-container matColumnDef="reason">
             <th class="head" mat-header-cell *matHeaderCellDef>Purpose</th>
             <td mat-cell class="tablecontent" *matCellDef="let element">
@@ -116,6 +126,10 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page of users"
+          ></mat-paginator>
         </table>
       </body>
     </mat-card>
@@ -144,6 +158,15 @@
             </td> </ng-container
           >&nbsp;
 
+          <ng-container matColumnDef="empFname">
+            <th class="head" mat-header-cell *matHeaderCellDef>
+              Contributor Name
+            </th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+              {{ element.empFname }}
+            </td> </ng-container
+          >&nbsp;
+
           <ng-container matColumnDef="amount">
             <th class="head" mat-header-cell *matHeaderCellDef>Amount</th>
             <td mat-cell class="tablecontent" *matCellDef="let element">
@@ -169,6 +192,7 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
         </table>
+        <!-- <div class="empty" *ngIf="!dataSource2">No records found</div> -->
       </body>
     </mat-card>
   </div>

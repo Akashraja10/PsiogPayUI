@@ -1,4 +1,7 @@
 <section class="bg">
+  <div class="giphy">
+    <img class="img" src="../../../assets/login.gif" />
+  </div>
   <div class="center-content">
     <!-- <img class="image" src="/src/assets/logo.jpg" /> -->
     <mat-card class="example-card">
@@ -39,6 +42,7 @@
         <p>
           <a class="tag" [routerLink]="['/forgetpassword']">Forget Password?</a>
         </p>
+
         <button type="submit" mat-button="primary">Submit</button>
         <div>
           <br />
@@ -46,6 +50,9 @@
             New to our platform?&nbsp;<a class="tag" [routerLink]="['/signup']"
               >SignUp!</a
             >
+          </p>
+          <p>
+            Are you admin?<a class="tag" [routerLink]="['/admin']">Admin?</a>
           </p>
         </div>
       </form>

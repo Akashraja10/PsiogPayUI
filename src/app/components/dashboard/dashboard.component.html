@@ -34,6 +34,9 @@
       <button mat-menu-item *ngIf="isUserAuthenticated()">
         <a class="logout" (click)="logOut()">Logout</a>
       </button>
+      <button mat-menu-item routerLink="/dashboard/recenttransaction">
+        Recent Transaction
+      </button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -53,7 +56,7 @@
       <a [routerLink]="['request']" class="one">Request</a></button
     ><br /><br /><br />
     <button mat-raised-button *ngIf="isUserAuthenticated()">
-      <a class="logout" (click)="logOut()">Logout</a></button
+      <a class="one" (click)="logOut()">Logout</a></button
     ><br /><br />
   </mat-drawer>
 

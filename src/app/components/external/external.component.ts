@@ -74,6 +74,7 @@ export class ExternalComponent implements OnInit {
       },
       error:(err)=>{
         console.log(err);
+        this.router.navigate(["/payunsuccess"]);
       }
     });
   }

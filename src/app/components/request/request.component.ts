@@ -20,10 +20,14 @@ import { ReqTransferComponent } from './req-transfer/req-transfer.component';
 export class RequestComponent implements OnInit {
   baseApiUrl: string =environment.baseApiUrl;
 
-  displayedColumns: string[] = ['requestID', 'reason', 'quotedAmount','recievedAmount','send'];
-  displayedColumns2:string[] = ['groupId', 'contributorId', 'amount','sent'];
+  displayedColumns: string[] = ['requestID','name', 'reason', 'quotedAmount','recievedAmount','send'];
+  displayedColumns2:string[] = ['groupId', 'contributorId','empFname','amount','sent'];
+  
   dataSource = new MatTableDataSource();
   dataSource2 = new MatTableDataSource();
+  //dataSource: any=null
+  //dataSource2: any =null
+  dataSources: any =null
   
   public fullName: string="";
   public id: Number=(0);

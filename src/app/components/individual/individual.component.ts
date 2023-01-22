@@ -13,6 +13,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { TransferComponent } from './transfer/transfer.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 
 
 @Component({

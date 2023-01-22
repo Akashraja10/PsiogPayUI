@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -9,6 +10,7 @@ import { IndividualComponent } from './components/individual/individual.componen
 import { TransferComponent } from './components/individual/transfer/transfer.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentsuccessfulComponent } from './components/paymentsuccessful/paymentsuccessful.component';
+import { PaymentunsuccessfulComponent } from './components/paymentunsuccessful/paymentunsuccessful.component';
 import { RecenttransactionComponent } from './components/recenttransaction/recenttransaction.component';
 import { RequestComponent } from './components/request/request.component';
 import { SampleComponent } from './components/sample/sample.component';
@@ -30,6 +32,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
+  {
+    path: 'admin',
+    component: AdminLoginComponent,
+  },
 
   {
     path: 'signup',
@@ -43,7 +49,7 @@ const routes: Routes = [
   {
     path: 'dashboards',
     component: BarChartComponent,
-    canActivate:[AuthGuard]
+  
   },
   {
     path: 'dashboard/individual',
@@ -79,7 +85,12 @@ const routes: Routes = [
   {
     path:'paysuccess',
     component: PaymentsuccessfulComponent,
-    canActivate:[AuthGuard]
+    // canActivate:[AuthGuard]
+  },
+  {
+    path:'payunsuccess',
+    component: PaymentunsuccessfulComponent,
+    // canActivate:[AuthGuard]
   },
   // {
   //   path:'sample',

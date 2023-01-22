@@ -1,0 +1,157 @@
+#profile{
+    position: absolute;
+    right: 0;
+}
+.section{
+    width:100%;
+    height: 100%;
+    background-color: beige;
+}
+.container1{
+    margin: auto;
+    width: 60%;
+    /* border: 1px solid rgb(71, 71, 218); */
+    /* background-color: #63b32e; */
+    padding: 10px;
+}
+.container2{
+   width:20%;
+   margin-right: 30px;
+   margin-top: 40px;
+}
+.list,tr,td{
+    /* border:1px solid black; */
+    padding: 10px;
+    margin: auto;
+    width: 30%;
+ }
+ .list{
+     width:100%;
+     border-collapse: collapse;
+     background-color:white 
+     /* background-color:rgba(57, 206, 206,0.9); */
+ }
+ .list td{ 
+     color: rgb(0, 0, 0);
+     text-align: center;
+     
+ }
+ .list td a{
+    text-decoration: none;
+    color: black;
+ }
+ #send{
+    
+    /* background-color:#63b32e; */
+    border: none;
+    padding: 2px 1px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 1px 2px;
+    cursor: pointer;
+    background-color: #FE4066;
+    border-radius: 6px;
+    color: white;
+  
+}
+
+.mb-3{
+    text-align: center;
+}
+.myform{
+    padding: 10px;
+    background-color:white; 
+    /* border: 2px solid #2DB7BC;  */
+    border-radius: 8px;
+    text-align: center;
+ }
+ .mytable{
+    border-collapse: collapse;
+    width: 100%;
+ }
+ .navbtn::after{  
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+ }
+ .navbtn:hover::after{
+    width: 100%;
+ }
+ span{
+    font-size: 16px;
+ }
+
+
+
+ .content
+ {
+   position: relative;
+   max-height: 440px;
+   overflow-y: auto;
+   
+ }
+ table{
+    width: 100%;
+  }
+  .stream-card
+  {
+    position: relative;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5); 
+    left: 8em;
+    width: 80%;
+    top: 1em;
+    height: 430px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  .head{
+    
+    font-size: 14px;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    color: black;
+    text-align: center;
+    background-color: #bdbdbd;
+  }
+  .tablecontent
+  {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font: bold;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+  }
+  .mat-row:hover {
+    background-color:#eeeeee;
+  }
+  a{
+   color: black;
+  }
+  #logo{
+   left: 130px;
+ }
+.logOut{
+   margin-left: 600px;
+   margin-top: 50px;
+}
+.logout::after{  
+   content: '';
+   width: 0%;
+   height: 2px;
+   background: #f44336;
+   display: block;
+   margin: auto;
+   transition: 0.5s;
+ }
+ .logout:hover::after{
+   width: 100%;
+ }

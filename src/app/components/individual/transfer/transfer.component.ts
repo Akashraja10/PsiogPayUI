@@ -66,7 +66,8 @@ export class TransferComponent implements OnInit {
       error:(err)=>{
         console.log(err);
         this.dialogRef.close({event:'Cancel'});
-        this.router.navigate([""]);
+        this.openSnackBar('Insufficient Wallet Amount !','Close'); 
+        this.router.navigate(["/payunsuccess"]);
       }
     });
   }

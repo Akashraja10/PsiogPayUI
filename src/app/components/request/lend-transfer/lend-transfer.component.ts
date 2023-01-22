@@ -63,13 +63,14 @@ export class LendTransferComponent implements OnInit {
       next:(res)=>{
         console.log(res),
         this.dialogRef.close({event:'Cancel'});
-        this.openSnackBar('Contributed Successfully !','Close');  
+        this.openSnackBar('LendBack Successfully !','Close');  
         this.router.navigate(['paysuccess']);
       },
       error:(err)=>{
         console.log(err);
         this.dialogRef.close({event:'Cancel'});
-        this.router.navigate([""]);
+        this.openSnackBar('Insufficient Wallet Amount !','Close');
+        this.router.navigate(["payunsuccess"]);
       }
     });
   }

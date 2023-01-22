@@ -3,6 +3,14 @@
     right: 0;
 }
 
+.content
+{
+  position: relative;
+  max-height: 440px;
+  overflow-y: auto;
+  
+}
+
 .myclass{
    display: flex;
    background-color: beige;
@@ -48,7 +56,7 @@ h1{
    display: inline-block;
    font-size: 12px;
    margin: 1px 2px;
-   margin-left: 100px;
+   /* margin-left: 100px; */
    cursor: pointer;
    background-color: #FE4066;
    border-radius: 6px;
@@ -68,8 +76,8 @@ table{
   {
     position: relative;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5); 
-    left: 8em;
-    width: 80%;
+    left: 3em;
+    width: 88%;
     top: 1em;
     height: auto;
     background-color: var(--background-color);
@@ -100,6 +108,7 @@ table{
     background-color:#eeeeee;
   }
   .myclass2{
+   padding-top: 30px;
    display: flex;
    background-color: beige;
    width:100%;
@@ -110,3 +119,9 @@ table{
    height:50%;
    
 }
+.empty{
+   /* margin-top: 100px; */
+   font-size: x-large;
+   font-weight: 600;
+   text-align: center;
+ }

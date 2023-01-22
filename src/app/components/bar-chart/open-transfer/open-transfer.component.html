@@ -1,0 +1,20 @@
+<div mat-dialog-content>
+  <form class="myform" [formGroup]="transferForm">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        [(ngModel)]="myid"
+        placeholder="Id"
+        formControlName="id"
+      />
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button class="button1" mat-button (click)="doAction()" id="send">
+        Delete
+      </button>
+      <button class="button2" mat-button (click)="closeDialog()" id="send">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

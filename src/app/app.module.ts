@@ -39,6 +39,9 @@ import { ReqTransferComponent } from './components/request/req-transfer/req-tran
 import { LendTransferComponent } from './components/request/lend-transfer/lend-transfer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RecenttransactionComponent } from './components/recenttransaction/recenttransaction.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { OpenTransferComponent } from './components/bar-chart/open-transfer/open-transfer.component';
+import { PaymentunsuccessfulComponent } from './components/paymentunsuccessful/paymentunsuccessful.component';
 
 
 
@@ -67,6 +70,9 @@ export function tokenGetter() {
     LendTransferComponent,
     ContactComponent,
     RecenttransactionComponent,
+    AdminLoginComponent,
+    OpenTransferComponent,
+    PaymentunsuccessfulComponent,
    
   ],
   imports: [

@@ -16,6 +16,9 @@
     <button class="navbtn" mat-button routerLink="/dashboard/external">
       <span>External</span>&nbsp;
     </button>
+    <button class="navbtn" mat-button routerLink="/dashboard/request">
+      <span>Request</span>&nbsp;
+    </button>
     <button id="logo" mat-button routerLink="dashboard">
       <img src="../../../assets/new.jpg" width="150px" />&nbsp;
     </button>
@@ -26,6 +29,9 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
+      <button mat-menu-item routerLink="/dashboard/recenttransaction">
+        Recent Transaction
+      </button>
       <button mat-menu-item *ngIf="isUserAuthenticated()">
         <a class="logout" (click)="logOut()">Logout</a>
       </button>
@@ -63,7 +69,7 @@
       </div>
 
       <div class="sec">
-        <img class="image" src="../../../assets/money.jpg" />
+        <img class="image" src="../../../assets/money2.gif" />
       </div>
     </section>
   </div>
