@@ -1,0 +1,35 @@
+
+span{
+  font-size: 16px;
+}
+.button1
+{
+    position: relative;
+    left: 9.5em;
+    padding : 0.25em,1em,0.25em,1em;
+    
+}
+.button1:hover{
+  background-color: #FE4066;
+  color: beige;
+}
+body{
+  background-color: beige;
+  height: 100%;
+}
+.example-card{  
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5); 
+    height:200px;
+    background-color: white;
+}
+.example-full-width{
+  margin-left: 70px;
+}
+h2{
+  text-align: center;
+}
+.myform{
+  width:30%;
+  margin-left: 500px;
+
+}

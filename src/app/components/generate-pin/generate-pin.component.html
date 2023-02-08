@@ -1,0 +1,65 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button class="navbtn" mat-button routerLink="">
+      <span>About</span>&nbsp;</button
+    >&nbsp;&nbsp;
+    <a class="navbtn" href="https://formsubmit.co/el/rajemi"
+      ><button mat-button><span>Contact</span>&nbsp;</button></a
+    >&nbsp;&nbsp;
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <mat-icon>notification_important</mat-icon>
+      </button>
+      <span *ngIf="notificationCount > 0" class="badge badge-danger">{{
+        notificationCount
+      }}</span>
+    </div>
+    <button id="logo" mat-button routerLink="dashboard">
+      <img src="../../../assets/new.jpg" width="150px" />&nbsp;
+    </button>
+
+    <button class="navbtn" id="profile" mat-button [matMenuTriggerFor]="menu">
+      <span>{{ fullName }}</span>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logOut()" routerLink="/login">
+        Logout
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<body>
+  <br /><br /><br />
+  <div class="myform" [formGroup]="form">
+    <mat-card class="example-card">
+      <mat-card-title><h2>SET PIN</h2></mat-card-title>
+      <mat-form-field class="example-full-width">
+        <mat-label>PIN</mat-label>
+        <input
+          matInput
+          #pinn
+          maxlength="4"
+          placeholder="Ex. 9410"
+          formControlName="pin"
+        />
+        <mat-hint>{{ pinn.value.length }} /4 digits only</mat-hint>
+        <mat-error *ngIf="pin?.errors?.['required']">
+          Valid PIN is required
+        </mat-error>
+        <mat-icon matSuffix>lock</mat-icon> </mat-form-field
+      ><br /><br />
+      <button class="button1" mat-button (click)="submit()" id="send">
+        SUBMIT
+      </button>
+    </mat-card>
+  </div>
+</body>

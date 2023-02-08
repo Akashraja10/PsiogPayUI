@@ -15,6 +15,7 @@ export class EmployeeService {
 
   private fullName$= new BehaviorSubject<string>("");
   private id$= new BehaviorSubject<Number>(0);
+  private pin$= new BehaviorSubject<Number>(0);
   constructor(private http: HttpClient) {}
 
     // public individualList(){
@@ -36,6 +37,12 @@ export class EmployeeService {
     }
     public setFullNameFromStore(fullname:string){
       this.fullName$.next(fullname)
+    }
+    public getPinFromStore(){
+      return this.pin$.asObservable();
+    }
+    public setPinFromStore(pin:Number){
+      this.pin$.next(pin)
     }
 
 

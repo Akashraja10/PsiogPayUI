@@ -69,7 +69,7 @@ export class IndividualComponent implements OnInit {
 
       this.http.get(this.baseApiUrl+"/api/Employee/"+this.id).subscribe(  
         (data: any) => {  this.dataSource=new  MatTableDataSource(data) as any ;
-        console.log(this.dataSource);       
+        //console.log(this.dataSource);       
       }
         ,(err: any)=>{  
           console.log(err);  

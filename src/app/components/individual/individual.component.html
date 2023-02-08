@@ -29,8 +29,11 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/dashboard/wallet">My Wallet</button>
-      <button mat-menu-item *ngIf="isUserAuthenticated()">
-        <a class="logout" (click)="logOut()">Logout</a>
+      <button mat-menu-item routerLink="/dashboard/recenttransaction">
+        Recent Transaction
+      </button>
+      <button mat-menu-item (click)="logOut()" routerLink="/login">
+        Logout
       </button>
     </mat-menu>
   </mat-toolbar-row>
@@ -40,7 +43,7 @@
   <mat-card class="stream-card">
     <body class="content">
       <mat-form-field>
-        <mat-label>Filter</mat-label>
+        <mat-label>Search</mat-label>
         <input
           matInput
           (keyup)="applyFilter($event)"
@@ -81,9 +84,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         <mat-paginator
-          [pageSizeOptions]="[5, 10, 25, 100]"
-          aria-label="Select page of users"
-        ></mat-paginator>
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
       </table>
     </body>
   </mat-card>

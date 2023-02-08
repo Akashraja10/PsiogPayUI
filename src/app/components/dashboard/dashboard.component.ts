@@ -17,21 +17,26 @@ export class DashboardComponent implements OnInit {
   showFiller = false;
   public fullName: string="";
   public id: Number=(0);
+  public pin:Number=(0);
+
   notificationCount = 0;
   public chart: any;
 
   incrementNotificationCount() {
     this.notificationCount++;
   }
+  
 
   constructor(private jwtHelper: JwtHelperService, private router: Router
     ,private http: HttpClient,private employeeService:EmployeeService,
     private auth:AuthGuard,private _snackBar: MatSnackBar,) { }
+    
 
   ngOnInit(): void {
 
-    //this.createsChart();
 
+    //this.createsChart();
+    
     this.employeeService.getFullNameFromStore()
     .subscribe(val=>{
       let fullNameFromToken=this.auth.getFullNameFromToken();
@@ -43,10 +48,24 @@ export class DashboardComponent implements OnInit {
     .subscribe(val=>{
       let idFromToken=this.auth.getidFromToken();
       this.id=val || idFromToken
-      //console.log(this.id)
+      //console.log(idFromToken)
     });
 
-    
+    this.employeeService.getPinFromStore()
+    .subscribe(val=>{
+      let pinFromToken=this.auth.getPinFromToken();
+      this.pin=val || pinFromToken
+      console.log(val);
+      
+      if(this.pin==0 || this.pin==null){    
+        console.log(this.pin)       
+      this.router.navigate(["mypin"]);
+      }
+      else{
+        console.log(this.pin)
+        this.router.navigate(["dashboard"])
+      }
+    })    
   
   }
 
@@ -60,8 +79,9 @@ export class DashboardComponent implements OnInit {
   
   logOut = () => {
     localStorage.removeItem("jwt");
+    localStorage.removeItem("");
     this.router.navigate(['login']);
-    this.openSnackBar('Logged Out!','Close'); 
+    this.openSnackBar('Logged Out!','Close');
   }
   openSnackBar(message: string, action: string) 
   {

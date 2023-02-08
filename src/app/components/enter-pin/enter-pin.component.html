@@ -1,0 +1,47 @@
+<body>
+  <br /><br /><br /><br /><br /><br />
+  <div class="myform" [formGroup]="form">
+    <mat-card class="example-card">
+      <mat-card-title><h2>ENTER PIN</h2></mat-card-title>
+      <mat-form-field class="example-full-width">
+        <mat-label>PIN</mat-label>
+        <input
+          matInput
+          #pinn
+          maxlength="4"
+          placeholder="Ex. 9410"
+          formControlName="pin"
+        />
+        <mat-hint>{{ pinn.value.length }} /4 digits only</mat-hint>
+        <mat-error *ngIf="pin?.errors?.['required']">
+          Valid PIN is required
+        </mat-error>
+        <mat-icon matSuffix>lock</mat-icon> </mat-form-field
+      ><br /><br />
+      <button class="button1" mat-button (click)="submit()" id="send">
+        SUBMIT
+      </button>
+    </mat-card>
+  </div>
+</body>
+
+<!-- <section class="calculator">
+  <form>
+    <input type="text" class="log" />
+  </form>
+  <div class="buttons">
+    <button type="button" class="btn" id="numbers" data-num="9">9</button>
+    <button type="button" class="btn" id="numbers" data-num="8">8</button>
+    <button type="button" class="btn" id="numbers" data-num="7">7</button>
+    <button type="button" class="btn" id="numbers" data-num="6">6</button>
+    <button type="button" class="btn" id="numbers" data-num="5">5</button>
+    <button type="button" class="btn" id="numbers" data-num="4">4</button>
+    <button type="button" class="btn" id="numbers" data-num="3">3</button>
+    <button type="button" class="btn" id="numbers" data-num="2">2</button>
+    <button type="button" class="btn" id="numbers" data-num="1">1</button>
+    <button type="button" class="btn" id="numbers" data-num="0">0</button>
+    <button class="button1" mat-button (click)="doAction()" id="send">
+      Transfer
+    </button>
+  </div>
+</section> -->

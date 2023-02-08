@@ -28,6 +28,9 @@
 h1{
    margin-left: 30px;
 }
+.navbtn{
+   color: black;
+}
 .navbtn::after{  
     content: '';
     width: 0%;
@@ -125,3 +128,10 @@ table{
    font-weight: 600;
    text-align: center;
  }
+ #invisible{
+   display: block;
+   visibility: hidden;
+   height: 0;
+   width: 0;
+}
+

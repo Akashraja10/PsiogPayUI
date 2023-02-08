@@ -6,9 +6,9 @@
     <button class="navbtn" mat-button routerLink="">
       <span>About</span>&nbsp;
     </button>
-    <button class="navbtn" mat-button routerLink="">
-      <span>Contact</span>&nbsp;
-    </button>
+    <a class="navbtn" href="https://formsubmit.co/el/rajemi"
+      ><button mat-button><span>Contact</span>&nbsp;</button></a
+    >
     <button class="navbtn" mat-button routerLink="/dashboard/individual">
       <span>Individual</span>&nbsp;
     </button>
@@ -25,8 +25,8 @@
       <button mat-menu-item routerLink="/dashboard/recenttransaction">
         Recent Transaction
       </button>
-      <button mat-menu-item *ngIf="isUserAuthenticated()">
-        <a class="logout" (click)="logOut()">Logout</a>
+      <button mat-menu-item (click)="logOut()" routerLink="/login">
+        Logout
       </button>
     </mat-menu>
   </mat-toolbar-row>
@@ -36,9 +36,9 @@
   <div class="first">
     <br />
     <mat-card class="example-card">
-      <mat-card-title><h1>Ask For Request</h1></mat-card-title><br />
+      <mat-card-title><h1>Ask For Request</h1></mat-card-title>
       <form [formGroup]="reqForm" (ngSubmit)="submit()">
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" id="invisible">
           <mat-label>Employee ID</mat-label>
           <input
             matInput

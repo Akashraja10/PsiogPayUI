@@ -62,6 +62,7 @@ export class ExternalComponent implements OnInit {
   logOut = () => {
     localStorage.removeItem("jwt");
     this.router.navigate(['login']);
+    this.openSnackBar('Logged Out!','Close');
   }
   
   submit(){

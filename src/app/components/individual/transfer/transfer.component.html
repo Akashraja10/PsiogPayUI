@@ -1,4 +1,4 @@
-<div mat-dialog-content>
+<div mat-dialog-content class="mat">
   <form class="myform" [formGroup]="transferForm">
     <mat-form-field appearance="fill">
       <input
@@ -10,7 +10,7 @@
       <span matPrefix>&#8377;&nbsp;</span>
       <span matSuffix>.00</span>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="invisible">
       <input
         matInput
         [(ngModel)]="myid"

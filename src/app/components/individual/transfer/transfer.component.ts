@@ -60,8 +60,8 @@ export class TransferComponent implements OnInit {
       next:(res)=>{
         console.log(res),
         this.dialogRef.close({event:'Cancel'});
-        this.openSnackBar('Transfer Successfully !','Close');  
-        this.router.navigate(['paysuccess']);
+        //this.openSnackBar('Transfer Successfully !','Close');  
+        this.router.navigate(['enterpin']);
       },
       error:(err)=>{
         console.log(err);

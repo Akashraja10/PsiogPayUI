@@ -50,6 +50,10 @@ import { HttpClient } from '@angular/common/http';
     if(this.empPayload)
     return this.empPayload.unique_name
   }
+  getPinFromToken(){
+    if(this.empPayload)
+    return this.empPayload.jti
+  }
 
   // setid(tokenvalue: string){
   //   localStorage.setItem("certserialnumber",tokenvalue)

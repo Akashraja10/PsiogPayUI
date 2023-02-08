@@ -42,6 +42,9 @@ import { RecenttransactionComponent } from './components/recenttransaction/recen
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { OpenTransferComponent } from './components/bar-chart/open-transfer/open-transfer.component';
 import { PaymentunsuccessfulComponent } from './components/paymentunsuccessful/paymentunsuccessful.component';
+import { GeneratePinComponent } from './components/generate-pin/generate-pin.component';
+import { EnterPinComponent } from './components/enter-pin/enter-pin.component';
+import { EmployeeService } from './services/employee.service';
 
 
 
@@ -73,6 +76,8 @@ export function tokenGetter() {
     AdminLoginComponent,
     OpenTransferComponent,
     PaymentunsuccessfulComponent,
+    GeneratePinComponent,
+    EnterPinComponent,
    
   ],
   imports: [
@@ -109,7 +114,7 @@ export function tokenGetter() {
   ],
   providers: [/*{
     provide: MatDialogRef,
-  }*/],
+  }*/EmployeeService],
 
   bootstrap: [AppComponent]
 })

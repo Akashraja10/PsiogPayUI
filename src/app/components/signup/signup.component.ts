@@ -3,6 +3,7 @@ import { HttpErrorResponse, HttpHeaders, HttpClient } from '@angular/common/http
 import { Router } from '@angular/router';
 import { RegisterModel } from 'src/app/models/register.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +24,7 @@ export class SignupComponent implements OnInit {
   invalidLogin: boolean | undefined;
   hide = true; //^(?:1[01][0-9]|120|1[7-9]|[2-9][0-9])$
 
-  constructor(private router: Router,private http: HttpClient){}
+  constructor(private router: Router,private http: HttpClient,private _snackBar: MatSnackBar){}
   ngOnInit(): void {
       }
 
@@ -61,11 +62,22 @@ export class SignupComponent implements OnInit {
       },
     error: (err: HttpErrorResponse) => {
       this.invalidLogin = true;
-      this.router.navigate([""]);
+      this.router.navigate(["signup"]);
+      this.signUpForm.reset();
+      this.openSnackBar('SignUp Failed!','Close');
     }
   })    
     }
+    openSnackBar(message: string, action: string) 
+    {
+      this._snackBar.open(message, action, {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right'
+      });
+    }
   }
+
 
 // export class SignupComponent implements OnInit {
   

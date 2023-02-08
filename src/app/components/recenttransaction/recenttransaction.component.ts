@@ -20,12 +20,14 @@ export class RecenttransactionComponent implements OnInit {
   myid:any;
   baseApiUrl: string =environment.baseApiUrl;
 
-  displayedColumns: string[] = ['recieverId', 'amount','time'];
+  displayedColumns: string[] = ['recieverId','empFname', 'amount','time'];
   displayedColumns2: string[] = ['extId', 'content', 'amount',];
-  displayedColumns3: string[] = ['groupId', 'reqId', 'amount',];
+  displayedColumns3: string[] = ['groupId', 'reqId','empFname', 'amount',];
+  displayedColumns4: string[] = ['lendId', 'groupId','empFname', 'paybackAmount',];
   dataSource = new MatTableDataSource();
   dataSource2 = new MatTableDataSource();
    dataSource3 = new MatTableDataSource();
+   dataSource4 = new MatTableDataSource();
    //dataSources :any =null
 
   constructor(private http: HttpClient,
@@ -73,6 +75,15 @@ export class RecenttransactionComponent implements OnInit {
     this.http.get(this.baseApiUrl+"/api/GroupRecent/"+this.id).subscribe(  
       (data: any) => {  this.dataSource3=new  MatTableDataSource(data) as any ;
       console.log(this.dataSource3);       
+    }
+      ,(err: any)=>{  
+        console.log(err);  
+      }
+    );
+
+    this.http.get(this.baseApiUrl+"/api/LendRecent/"+this.id).subscribe(  
+      (data: any) => {  this.dataSource4=new  MatTableDataSource(data) as any ;
+      console.log(this.dataSource4);       
     }
       ,(err: any)=>{  
         console.log(err);  

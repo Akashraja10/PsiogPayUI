@@ -36,8 +36,8 @@
       <button mat-menu-item routerLink="/dashboard/recenttransaction">
         Recent Transaction
       </button>
-      <button mat-menu-item *ngIf="isUserAuthenticated()">
-        <a class="logout" (click)="logOut()">Logout</a>
+      <button mat-menu-item (click)="logOut()" routerLink="/login">
+        Logout
       </button>
     </mat-menu>
   </mat-toolbar-row>
@@ -94,10 +94,10 @@
             formControlName="content"
           /> </mat-form-field
         ><br />
-        <mat-form-field>
+        <mat-form-field class="invisible">
           <input
             matInput
-            [(ngModel)]="myid"
+            [(ngModel)]="id"
             placeholder="myid"
             formControlName="empId"
           /> </mat-form-field

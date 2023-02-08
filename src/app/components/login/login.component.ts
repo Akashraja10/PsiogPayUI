@@ -4,6 +4,8 @@ import { NgForm,Validators,ReactiveFormsModule,FormControl, FormGroup   } from '
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthenticatedResponse, LoginModel } from 'src/app/models/login.model';
+import { AuthGuard } from 'src/app/services/authguard.service';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +20,9 @@ export class LoginComponent implements OnInit {
   });
   invalidLogin: boolean | undefined;
   hide = true;
+   public pin:Number=(0);
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router,private employeeService:EmployeeService,private http: HttpClient,private _snackBar: MatSnackBar) { }
    ngOnInit(): void {
 
    }
@@ -32,25 +35,42 @@ export class LoginComponent implements OnInit {
    
  
 submit (){
-  this.http.post<AuthenticatedResponse>("https://localhost:7290/api/Employee/login", this.loginForm.value, {
+  this.http.post<AuthenticatedResponse>("https://localhost:7290/api/Employee/login", this.loginForm.value,
+  {    
   headers: new HttpHeaders({ "Content-Type": "application/json"})  
 })
   .subscribe({
+    
       next:(response: AuthenticatedResponse)=>{
         const token = response.token;
         localStorage.setItem("jwt", token); 
-        this.invalidLogin = false; 
+        this.invalidLogin = false;  
         
+        // let pinFromToken=this.auth.getPinFromToken();
+        // this.pin=pinFromToken
+        // console.log(this.pin)
+
         this.router.navigate(["dashboard"]);
         console.log(this.loginForm.value);
+        
       },
     error: (err: HttpErrorResponse) =>{ 
       this.invalidLogin = true;
-      this.router.navigate([""]);
+      this.router.navigate(["login"]); 
+      this.loginForm.reset();
+      this.openSnackBar('Incorrect Login!','Close');
     }
   })    
     }
   
+    openSnackBar(message: string, action: string) 
+    {
+      this._snackBar.open(message, action, {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right'
+      });
+    }
   
       
 

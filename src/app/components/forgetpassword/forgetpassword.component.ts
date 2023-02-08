@@ -45,7 +45,11 @@ export class ForgetpasswordComponent implements OnInit {
           this.router.navigate(["/login"]);
           
         },
-      error: (err: HttpErrorResponse) => this.invalidLogin = true
+      error: (err: HttpErrorResponse) => {
+      this.invalidLogin = true;
+      this.openSnackBar('Invalid Entry','Close');        
+      this.router.navigate(["/login"]);
+      }
     })   
 
   }

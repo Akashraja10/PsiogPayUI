@@ -4,8 +4,10 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EnterPinComponent } from './components/enter-pin/enter-pin.component';
 import { ExternalComponent } from './components/external/external.component';
 import { ForgetpasswordComponent } from './components/forgetpassword/forgetpassword.component';
+import { GeneratePinComponent } from './components/generate-pin/generate-pin.component';
 import { IndividualComponent } from './components/individual/individual.component';
 import { TransferComponent } from './components/individual/transfer/transfer.component';
 import { LoginComponent } from './components/login/login.component';
@@ -40,6 +42,11 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+  },
+  {
+    path: 'mypin',
+    component: GeneratePinComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'dashboard',
@@ -83,14 +90,19 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
+    path:'enterpin',
+    component: EnterPinComponent,
+    canActivate:[AuthGuard]
+  },
+  {
     path:'paysuccess',
     component: PaymentsuccessfulComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path:'payunsuccess',
     component: PaymentunsuccessfulComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   // {
   //   path:'sample',

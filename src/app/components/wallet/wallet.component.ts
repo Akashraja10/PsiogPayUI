@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthGuard } from 'src/app/services/authguard.service';
@@ -31,7 +32,8 @@ export class WalletComponent implements OnInit {
     private router: Router,
     private auth:AuthGuard,
     private employeeService:EmployeeService,
-    public dialog: MatDialog,) { }
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar) { }
 
     ngOnInit(): void {
       this.employeeService.getFullNameFromStore()
@@ -69,6 +71,15 @@ export class WalletComponent implements OnInit {
   logOut = () => {
     localStorage.removeItem("jwt");
     this.router.navigate(['login']);
+    this.openSnackBar('Logged Out!','Close');
+  }
+  openSnackBar(message: string, action: string) 
+  {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right'
+    });
   }
 
   openDialog(){
